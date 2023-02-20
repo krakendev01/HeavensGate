@@ -11,4 +11,14 @@ class loginmodel {
         val c= a - b
         return c
     }
+
+    fun multi(a:Int, b:Int): Int {
+        val c= a * b
+        return c
+    }
+
+    fun div(a:Int, b:Int): Int {
+        val c= a / b
+        return c
+    }
 }
