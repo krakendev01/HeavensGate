@@ -11,6 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
              web=findViewById<WebView>(R.id.webview)
-        web.loadUrl("https://www.google.com")
+        web.loadUrl("https://www.google.com/")
     }
 }
