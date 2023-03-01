@@ -19,25 +19,53 @@
         app:srcCompat="@drawable/gate" />
 
     <Button
-        android:id="@+id/btnemail"
-        android:layout_width="299dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="56dp"
-        android:text="continue with Email"
-        android:textSize="18sp"
+        android:id="@+id/btnotp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="164dp"
+        android:text="Get Otp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <Button
-        android:id="@+id/btnphn"
-        android:layout_width="299dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="168dp"
-        android:layout_marginEnd="56dp"
-        android:text="Continue with Phone number"
-        android:textSize="18sp"
+    <EditText
+        android:id="@+id/phn"
+        android:layout_width="348dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="55dp"
+        android:ems="10"
+        android:hint="Enter your phone number"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/btnotp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dont have account? "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signup"
+        app:layout_constraintTop_toBottomOf="@+id/btnotp"
+        app:layout_constraintVertical_bias="0.811" />
+
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="128dp"
+        android:text="SignUp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnotp"
+        app:layout_constraintVertical_bias="0.81" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
