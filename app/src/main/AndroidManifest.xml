@@ -14,6 +14,19 @@
         <activity
             android:name=".auth.signin"
             android:exported="false" />
+
+        <activity
+            android:name=".auth.fundsignup"
+            android:exported="false" />
+        <activity
+            android:name=".auth.donsignup"
+            android:exported="false" />
+        <activity
+            android:name=".auth.phnsignin"
+            android:exported="false" />
+        <activity
+            android:name=".auth.signup"
+            android:exported="false" />
         <activity
             android:name=".spalsh"
             android:exported="true">
@@ -25,7 +38,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
