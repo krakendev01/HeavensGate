@@ -6,49 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".auth.signin">
 
-    <LinearLayout
-        android:layout_width="362dp"
-        android:layout_height="729dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginEnd="49dp"
-        android:orientation="vertical"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="252dp"
+
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="2dp"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gate" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="252dp"
-            android:layout_marginTop="40dp"
+    <Button
+        android:id="@+id/btnemail"
+        android:layout_width="299dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="56dp"
+        android:text="continue with Email"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-            app:srcCompat="@drawable/gate" />
+    <Button
+        android:id="@+id/btnphn"
+        android:layout_width="299dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="56dp"
+        android:text="Continue with Phone number"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        <EditText
-            android:id="@+id/editTextTextEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:ems="10"
-            android:hint="Enter your email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/editTextTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            android:hint="password"
-            android:inputType="textPassword" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="273dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="50dp"
-            android:text="Button" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
