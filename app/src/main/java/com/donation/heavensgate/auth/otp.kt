@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.donation.heavensgate.R
 
 class otp : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp)
