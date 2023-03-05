@@ -6,17 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".auth.signin">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="272dp"
-        android:layout_height="48dp"
 
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/phn"
@@ -28,6 +18,11 @@
         android:ems="10"
         android:hint="Enter your phone number"
         android:inputType="phone"
+        android:drawableStart="@drawable/baseline_phone_24"
+        android:drawablePadding="12dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:background="@drawable/cusedt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,11 +33,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="150dp"
         android:text="Get Otp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phn" />
 
@@ -64,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="128dp"
         android:text="SignUp"
+        android:textColor="#2196F3"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,16 +66,28 @@
         app:layout_constraintTop_toBottomOf="@+id/btnotp"
         app:layout_constraintVertical_bias="0.576" />
 
+
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="342dp"
-        android:layout_height="325dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="296dp"
+        android:layout_height="298dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:srcCompat="@drawable/loginillu"
         tools:srcCompat="@drawable/loginillu" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="272dp"
+        android:layout_height="48dp"
+
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
