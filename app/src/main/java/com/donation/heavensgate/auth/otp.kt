@@ -8,5 +8,7 @@ class otp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp)
+        //created new branch from devs
+
     }
 }
