@@ -10,6 +10,7 @@ import android.view.ViewTreeObserver
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import com.donation.heavensgate.auth.signin
 
 class spalsh : AppCompatActivity() {
     lateinit var  i_v:ImageView
@@ -31,10 +32,10 @@ class spalsh : AppCompatActivity() {
 
         // Handler().postDelayed({
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, signin::class.java)
             startActivity(intent)
             finish()
-        }, 3000) // 3000 is the delayed time in milliseconds.
+        }, 500) // 3000 is the delayed time in milliseconds.
 
 
         }
