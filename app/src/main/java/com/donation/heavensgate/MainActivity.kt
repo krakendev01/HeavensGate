@@ -10,7 +10,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-             web=findViewById<WebView>(R.id.webview)
-        web.loadUrl("https://www.google.com")
+
     }
 }
