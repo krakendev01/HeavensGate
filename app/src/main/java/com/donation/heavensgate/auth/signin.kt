@@ -16,6 +16,8 @@ class signin : AppCompatActivity() {
         binding.signup.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this@signin,signup::class.java))
         })
+        binding.imageView.setImageResource(R.drawable.logo)
+        binding.imageView4.setImageResource(R.drawable.loginillu)
         binding.btnotp.setOnClickListener(View.OnClickListener {  })
     }
 }
