@@ -6,20 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.donation.heavensgate.R
-import com.donation.heavensgate.databinding.ActivitySignUpMainBinding
+import com.donation.heavensgate.databinding.ActivitySigninBinding
 
 class SignIn : AppCompatActivity() {
-    lateinit var binding:ActivitySignUpMainBinding
+    lateinit var binding:ActivitySigninBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivitySignUpMainBinding.inflate(layoutInflater)
+        binding = ActivitySigninBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        binding.btnfund.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this@SignIn,fundsignup::class.java))
-
-        })
-        binding.imageView3.setImageResource(R.drawable.supimg)
-        binding.btndon.setOnClickListener(View.OnClickListener {
+        binding.imageView.setImageResource(R.drawable.logo)
+        binding.imageView4.setImageResource(R.drawable.loginillu)
+        binding.signup.setOnClickListener(View.OnClickListener {
 
             startActivity(Intent(this@SignIn,donsignup::class.java))
         })
