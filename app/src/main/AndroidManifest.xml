@@ -12,9 +12,11 @@
         android:theme="@style/Theme.HeavensGate"
         tools:targetApi="31">
         <activity
-            android:name=".auth.signin"
+            android:name=".auth.Choice"
             android:exported="false" />
-
+        <activity
+            android:name=".auth.SignUpMain"
+            android:exported="false" />
         <activity
             android:name=".auth.fundsignup"
             android:exported="false" />
@@ -25,7 +27,7 @@
             android:name=".auth.phnsignin"
             android:exported="false" />
         <activity
-            android:name=".auth.signup"
+            android:name=".auth.SignIn"
             android:exported="false" />
         <activity
             android:name=".spalsh"
