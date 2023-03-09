@@ -9,6 +9,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import com.donation.heavensgate.MainActivity
 import com.donation.heavensgate.R
 import com.donation.heavensgate.databinding.ActivitySigninBinding
@@ -30,6 +31,9 @@ class SignIn : AppCompatActivity() {
         setContentView(binding.root)
 
         auth= FirebaseAuth.getInstance()
+        binding.pb1.visibility=View.INVISIBLE
+        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.INTERNET),10)
+
 
         binding.btnotp.setOnClickListener(View.OnClickListener {
             if (binding.phn.text.isEmpty())
@@ -52,13 +56,15 @@ class SignIn : AppCompatActivity() {
                         .build()
                     PhoneAuthProvider.verifyPhoneNumber(options)
                 }
+                else
+                    Toast.makeText(this@SignIn,"Phone no. must be of 10 digits",Toast.LENGTH_SHORT).show()
             }
         })
         binding.imageView.setImageResource(R.drawable.logo)
         binding.imageView4.setImageResource(R.drawable.loginillu)
         binding.signup.setOnClickListener(View.OnClickListener {
 
-            startActivity(Intent(this@SignIn,donsignup::class.java))
+            startActivity(Intent(this@SignIn,Choice::class.java))
         })
 
 
@@ -81,6 +87,7 @@ class SignIn : AppCompatActivity() {
                 // This callback is invoked in an invalid request for verification is made,
                 // for instance if the the phone number format is not valid.
                 Log.w(TAG, "onVerificationFailed", e)
+                Toast.makeText(this@SignIn,e.message.toString(),Toast.LENGTH_SHORT).show()
 
                 if (e is FirebaseAuthInvalidCredentialsException) {
                     // Invalid request
@@ -104,7 +111,7 @@ class SignIn : AppCompatActivity() {
                 var storedVerificationId = verificationId
                 var resendToken = token
                 var intent = Intent(this@SignIn,otp::class.java)
-                intent.
+                intent.putExtra("OTP",storedVerificationId)
                 startActivity(intent)
                 binding.pb1.visibility=View.INVISIBLE
             }

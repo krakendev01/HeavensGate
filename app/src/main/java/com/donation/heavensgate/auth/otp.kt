@@ -22,12 +22,18 @@ class otp : AppCompatActivity() {
         binding = ActivityOtpBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        auth=FirebaseAuth.getInstance()
+
+
+        var otp=intent.getStringExtra("OTP").toString()
         binding.btnsmt.setOnClickListener(View.OnClickListener {
             if (binding.edopt.text.isEmpty()){
                 binding.edopt.error="Please enter OTP"
             }
             else {
-                val cradential : PhoneAuthCredential = PhoneAuthProvider.getCredential()
+
+                val cradential : PhoneAuthCredential = PhoneAuthProvider.getCredential(otp,binding.edopt.text.toString())
                 signInWithPhoneAuthCredential(cradential)
             }
         })

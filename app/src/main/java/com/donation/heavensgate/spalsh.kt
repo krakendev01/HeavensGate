@@ -10,7 +10,6 @@ import android.widget.ImageView
 import com.donation.heavensgate.auth.SignIn
 
 class spalsh : AppCompatActivity() {
-    lateinit var  i_v:ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,9 +35,5 @@ class spalsh : AppCompatActivity() {
 
 
         }
-
-
-
-
-        }
+}
 
