@@ -23,7 +23,7 @@
         android:layout_width="348dp"
         android:layout_height="51dp"
         android:layout_marginStart="103dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="103dp"
         android:background="@drawable/edt_cus"
         android:drawableStart="@drawable/baseline_local_phone_24"
@@ -41,12 +41,13 @@
         android:id="@+id/btnotp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/btn_cus"
         android:gravity="center"
         android:text="Get Otp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phn" />
 
@@ -60,7 +61,7 @@
         app:layout_constraintEnd_toStartOf="@+id/signup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnotp"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="0.303" />
 
     <TextView
         android:id="@+id/signup"
@@ -74,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/btnotp"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="0.303" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -93,11 +94,26 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="180dp"
+        android:layout_marginTop="304dp"
+        android:layout_marginEnd="182dp"
         android:requiresFadingEdge="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/phn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.961" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="212dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Welcome back"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#214583"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

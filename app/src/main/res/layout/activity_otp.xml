@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".auth.otp">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="272dp"
+        android:layout_height="48dp"
+
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
     <EditText
         android:id="@+id/edopt"
         android:layout_width="wrap_content"
