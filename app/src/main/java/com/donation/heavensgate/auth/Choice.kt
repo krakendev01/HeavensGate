@@ -18,7 +18,7 @@ class Choice : AppCompatActivity() {
             startActivity(Intent(this@Choice,fundsignup::class.java))
 
         })
-        binding.imageView3.setImageResource(R.drawable.supimg)
+        binding.imageView3.setImageResource(R.drawable.join)
         binding.btndon.setOnClickListener(View.OnClickListener {
 
             startActivity(Intent(this@Choice,donsignup::class.java))
