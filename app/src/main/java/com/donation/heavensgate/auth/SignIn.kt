@@ -31,7 +31,6 @@ class SignIn : AppCompatActivity() {
         setContentView(binding.root)
 
         auth= FirebaseAuth.getInstance()
-        binding.pb1.visibility=View.INVISIBLE
         ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.INTERNET),10)
 
 
@@ -45,7 +44,6 @@ class SignIn : AppCompatActivity() {
                 if (Patterns.PHONE.matcher(binding.phn.text).matches())
                 {
 
-                    binding.pb1.visibility=View.VISIBLE
 
                     val number=binding.phn.text.trim().toString()
                     val options = PhoneAuthOptions.newBuilder(auth)
@@ -88,7 +86,6 @@ class SignIn : AppCompatActivity() {
                 // for instance if the the phone number format is not valid.
                 Log.w(TAG, "onVerificationFailed", e)
                 Toast.makeText(this@SignIn,e.message.toString(),Toast.LENGTH_SHORT).show()
-                binding.pb1.visibility=View.INVISIBLE
 
                 if (e is FirebaseAuthInvalidCredentialsException) {
                     // Invalid request
@@ -116,7 +113,6 @@ class SignIn : AppCompatActivity() {
                 var intent = Intent(this@SignIn,otp::class.java)
                 intent.putExtra("OTP",storedVerificationId)
                 startActivity(intent)
-                binding.pb1.visibility=View.INVISIBLE
             }
         }
     }
