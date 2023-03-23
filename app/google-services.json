@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "85296560625",
+    "firebase_url": "https://heaven-s-gate-4621a-default-rtdb.firebaseio.com",
     "project_id": "heaven-s-gate-4621a",
     "storage_bucket": "heaven-s-gate-4621a.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "85296560625-0qp3m7lmjj6rn03571b8edr6a9i3rm55.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.donation.heavensgate",
+            "certificate_hash": "e2ef815f19b6ffcc9ac00d212ebb9693d98de9d9"
+          }
+        },
         {
           "client_id": "85296560625-gmcbkht98dg3gb998asiuu5k3ndgr1p6.apps.googleusercontent.com",
           "client_type": 3

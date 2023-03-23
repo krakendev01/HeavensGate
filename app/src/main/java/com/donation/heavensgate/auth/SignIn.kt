@@ -88,6 +88,7 @@ class SignIn : AppCompatActivity() {
                 // for instance if the the phone number format is not valid.
                 Log.w(TAG, "onVerificationFailed", e)
                 Toast.makeText(this@SignIn,e.message.toString(),Toast.LENGTH_SHORT).show()
+                binding.pb1.visibility=View.INVISIBLE
 
                 if (e is FirebaseAuthInvalidCredentialsException) {
                     // Invalid request
@@ -106,6 +107,8 @@ class SignIn : AppCompatActivity() {
                 // now need to ask the user to enter the code and then construct a credential
                 // by combining the code with a verification ID.
                 Log.d(TAG, "onCodeSent:$verificationId")
+                Toast.makeText(this@SignIn,verificationId.toString()+" \n Success in code sent",Toast.LENGTH_SHORT).show()
+
 
                 // Save verification ID and resending token so we can use them later
                 var storedVerificationId = verificationId
