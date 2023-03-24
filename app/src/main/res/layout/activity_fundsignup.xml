@@ -81,26 +81,26 @@
         android:id="@+id/Pass"
         android:layout_width="348dp"
         android:layout_height="51dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/edt_cus"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Phone" />
 
     <EditText
         android:id="@+id/Confirm_Pass"
         android:layout_width="348dp"
         android:layout_height="51dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginTop="22dp"
         android:background="@drawable/edt_cus"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Phone" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
