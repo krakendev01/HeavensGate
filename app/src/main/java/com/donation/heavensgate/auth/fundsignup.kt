@@ -1,12 +1,10 @@
 package com.donation.heavensgate.auth
 
 import android.content.Intent
-import android.net.MailTo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.donation.heavensgate.MainActivity
-import com.donation.heavensgate.R
 import com.donation.heavensgate.databinding.ActivityFundsignupBinding
 import com.donation.heavensgate.models.FundUsers
 import com.google.firebase.auth.FirebaseAuth
@@ -46,9 +44,8 @@ class fundsignup : AppCompatActivity() {
 
                      users= FundUsers(binding.Name.text.toString(),binding.Email.text.toString(),binding.Phone.text.toString(),binding.Pass.text.toString())
                     database.reference.child("fundusers")
-                        .child(binding.Email.text.toString())
+                        .child(binding.Phone.text.toString())
                         .setValue(users).addOnSuccessListener {
-                            Toast.makeText(this,"successfully inserted", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this@fundsignup,MainActivity::class.java))
                         }
                 }
