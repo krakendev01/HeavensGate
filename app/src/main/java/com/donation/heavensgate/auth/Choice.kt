@@ -20,8 +20,8 @@ class Choice : AppCompatActivity() {
         })
         binding.imageView3.setImageResource(R.drawable.join)
         binding.btndon.setOnClickListener(View.OnClickListener {
-
             startActivity(Intent(this@Choice,donsignup::class.java))
         })
     }
+
 }

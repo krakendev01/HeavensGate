@@ -11,106 +11,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_medium"
         android:text="Basic Detail"
         android:textColor="#214583"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="I am raising funds for a/an"
-        android:textColor="#131313"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="362dp"
-        android:layout_height="154dp"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
-
-        <LinearLayout
-            android:layout_width="336dp"
-            android:layout_height="wrap_content"
-
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="15dp"
-            tools:ignore="MissingConstraints">
-
-            <RadioButton
-                android:id="@+id/radioButton5"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="RadioButton" />
-
-            <RadioButton
-                android:id="@+id/radioButton6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="RadioButton" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="336dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="20dp">
-
-            <RadioButton
-                android:id="@+id/radioButton9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="RadioButton" />
-
-            <RadioButton
-                android:id="@+id/radioButton10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="RadioButton" />
-        </LinearLayout>
-
-    </RelativeLayout>
-
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/Name"
         android:layout_width="348dp"
         android:layout_height="51dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="92dp"
         android:background="@drawable/edt_cus"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
         android:paddingLeft="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/Email"
         android:layout_width="348dp"
         android:layout_height="51dp"
         android:layout_marginTop="20dp"
@@ -122,10 +48,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/Name" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/Phone"
         android:layout_width="348dp"
         android:layout_height="51dp"
         android:layout_marginTop="20dp"
@@ -136,19 +62,45 @@
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/Email" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/btn_cus"
         android:text="Continue"
         android:textStyle="bold"
-        android:background="@drawable/btn_cus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/Pass"
+        android:layout_width="348dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="44dp"
+        android:background="@drawable/edt_cus"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Phone" />
+
+    <EditText
+        android:id="@+id/Confirm_Pass"
+        android:layout_width="348dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="44dp"
+        android:background="@drawable/edt_cus"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Phone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
