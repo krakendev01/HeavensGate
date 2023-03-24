@@ -1,9 +1,8 @@
-package com.donation.heavensgate.auth
+package com.donation.heavensgate.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.donation.heavensgate.MainActivity
 import com.donation.heavensgate.databinding.ActivityFundsignupBinding
 import com.donation.heavensgate.models.FundUsers

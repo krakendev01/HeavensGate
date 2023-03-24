@@ -13,22 +13,20 @@
         android:theme="@style/Theme.HeavensGate"
         tools:targetApi="31">
         <activity
-            android:name=".auth.Choice"
+            android:name=".Activities.Choice"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activities.fundsignup"
             android:exported="false" />
         <activity
-            android:name=".auth.otp"
+            android:name=".Activities.donsignup"
             android:exported="false" />
         <activity
-            android:name=".auth.fundsignup"
+            android:name=".Activities.phnsignin"
             android:exported="false" />
         <activity
-            android:name=".auth.donsignup"
-            android:exported="false" />
-        <activity
-            android:name=".auth.phnsignin"
-            android:exported="false" />
-        <activity
-            android:name=".auth.SignIn"
+            android:name=".Activities.SignIn"
             android:exported="false" />
         <activity
             android:name=".spalsh"

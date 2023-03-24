@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
-import android.widget.ImageView
-import com.donation.heavensgate.auth.SignIn
+import com.donation.heavensgate.Activities.SignIn
 
 class spalsh : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

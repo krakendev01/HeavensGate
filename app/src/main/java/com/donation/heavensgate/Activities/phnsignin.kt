@@ -1,4 +1,4 @@
-package com.donation.heavensgate.auth
+package com.donation.heavensgate.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

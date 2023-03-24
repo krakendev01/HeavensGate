@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="materialCardView" type="id">PhoneCardView</item>
+    <item name="et_OTP" type="id">OTP</item>
+    <item name="VerifyOTP" type="id">Btn_OTP</item>
+    <item name="verify_materialCardView" type="id">OTPCardView</item>
+</resources>
