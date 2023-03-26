@@ -6,101 +6,165 @@
     android:layout_height="match_parent"
     tools:context=".Activities.fundsignup">
 
-    <TextView
-        android:id="@+id/textView2"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/BasicCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Basic Detail"
-        android:textColor="#214583"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/Name"
-        android:layout_width="348dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="92dp"
-        android:background="@drawable/edt_cus"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        android:paddingLeft="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/Email"
-        android:layout_width="348dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="15dp"
-        android:ems="10"
-        android:background="@drawable/edt_cus"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Name" />
-
-    <EditText
-        android:id="@+id/Phone"
-        android:layout_width="348dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="15dp"
-        android:ems="10"
-        android:background="@drawable/edt_cus"
-        android:hint="Phone number"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:background="@drawable/btn_cus"
-        android:text="Continue"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
-    <EditText
-        android:id="@+id/Pass"
-        android:layout_width="348dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edt_cus"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
+
+        app:circularflow_radiusInDP="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Basic Details"
+                android:textSize="30dp">
+            </TextView>
+            <EditText
+                android:id="@+id/Org"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="Organisation Name">
+            </EditText>
+            <EditText
+                android:id="@+id/Phone"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="Phone">
+            </EditText>
+            <EditText
+                android:id="@+id/Email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Email">
+            </EditText>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/Btn_Next"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Next"
+                    android:shadowRadius="100">
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/DetailedCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Phone" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:circularflow_radiusInDP="30dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Beneficiary Details"
+                    android:textSize="30dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black">
+                </TextView>
 
-    <EditText
-        android:id="@+id/Confirm_Pass"
-        android:layout_width="348dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="22dp"
-        android:background="@drawable/edt_cus"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Pass" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/Org_Images"
+                    android:layout_width="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/images_item">
+
+                </androidx.recyclerview.widget.RecyclerView>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Images">
+
+                </Button>
+
+                <EditText
+                    android:id="@+id/Details"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Detail of Organisation">
+                </EditText>
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Address">
+                </EditText>
+
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="City">
+                </EditText>
+                <Spinner
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="State">
+                </Spinner>
+                <Spinner
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="Country">
+                </Spinner>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:textSize="20dp"
+                        android:text="Latter or assuarance">
+                    </TextView>
+
+                    <ImageView
+                        android:src="@drawable/upload"
+                        android:id="@+id/LaterImage"
+                        android:layout_width="50dp"
+                        android:scaleType="centerCrop"
+                        android:layout_height="50dp">
+
+                    </ImageView>
+
+                </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Verify"
+                    android:id="@+id/BtnVerify">
+
+
+                </Button>
+
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
