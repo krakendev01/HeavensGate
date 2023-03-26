@@ -1,6 +1,7 @@
 package com.donation.heavensgate.Models
 
 data class AddOrgModel(
+    val Org_Id:String? = "",
     val Org_Name:String? = "",
     val Org_Email:String? = "",
     val Org_Phone:String? = "",
