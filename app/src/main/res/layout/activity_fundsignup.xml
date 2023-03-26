@@ -118,11 +118,11 @@
                     android:layout_height="50dp"
                     android:hint="City">
                 </EditText>
-                <Spinner
+                <EditText
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:hint="State">
-                </Spinner>
+                </EditText>
                 <Spinner
                     android:layout_width="300dp"
                     android:layout_height="50dp"
