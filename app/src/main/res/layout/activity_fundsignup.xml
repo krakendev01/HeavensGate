@@ -8,98 +8,129 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/BasicCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="355dp"
+        android:layout_height="385dp"
+        android:visibility="visible"
+        app:circularflow_radiusInDP="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
-
-        app:circularflow_radiusInDP="30dp">
+        app:layout_constraintVertical_bias="0.26">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
                 android:text="Basic Details"
-                android:textSize="30dp">
-            </TextView>
+                android:textColor="#214583"
+                android:textSize="28dp"
+                android:textStyle="bold"></TextView>
+
             <EditText
                 android:id="@+id/OrgName"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:hint="Organisation Name">
-            </EditText>
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_cus"
+                android:hint="Organisation Name"
+                android:paddingLeft="15dp"></EditText>
+
             <EditText
                 android:id="@+id/Phone"
-                android:inputType="number"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:hint="Phone">
-            </EditText>
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_cus"
+                android:hint="Phone"
+                android:inputType="number"
+                android:paddingLeft="15dp"></EditText>
+
             <EditText
                 android:id="@+id/Email"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:hint="Email">
-            </EditText>
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_cus"
+                android:hint="Email"
+                android:paddingLeft="15dp"></EditText>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/Btn_Next"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:text="Next"
-                    android:shadowRadius="100">
-                </Button>
+                    android:layout_marginLeft="135dp"
+                    android:background="@drawable/btn_cus"
+                    android:shadowRadius="100"
+                    android:text="Next"></Button>
             </LinearLayout>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/DetailedCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="379dp"
+        android:layout_height="655dp"
+        android:visibility="gone"
+        app:circularflow_radiusInDP="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"
-        app:circularflow_radiusInDP="30dp">
+        app:layout_constraintVertical_bias="0.17000002">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Beneficiary Details"
-                    android:textSize="30dp"
                     android:textAlignment="center"
-                    android:textColor="@color/black">
-                </TextView>
+                    android:textColor="#214583"
+                    android:textSize="28dp"
+                    android:textStyle="bold"></TextView>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/Org_Images"
                     android:layout_width="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:layout_height="100dp"
                     android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/images_item">
 
                 </androidx.recyclerview.widget.RecyclerView>
+
                 <Button
                     android:id="@+id/BtnUpload"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/btn_cus"
                     android:text="Upload Images">
 
                 </Button>
@@ -108,65 +139,87 @@
                     android:id="@+id/Details"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:hint="Detail of Organisation">
-                </EditText>
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/edt_cus"
+                    android:hint="Detail of Organisation"
+                    android:paddingLeft="15dp"></EditText>
+
                 <EditText
                     android:id="@+id/Address"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:hint="Address">
-                </EditText>
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/edt_cus"
+                    android:hint="Address"
+                    android:paddingLeft="15dp"></EditText>
 
                 <EditText
                     android:id="@+id/City"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:hint="City">
-                </EditText>
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/edt_cus"
+                    android:hint="City"
+                    android:paddingLeft="15dp"></EditText>
+
                 <EditText
                     android:id="@+id/State"
-
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:hint="State">
-                </EditText>
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/edt_cus"
+                    android:hint="State"
+                    android:paddingLeft="15dp"></EditText>
+
                 <EditText
                     android:id="@+id/Country"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:hint="Country">
-                </EditText>
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/edt_cus"
+                    android:hint="Country"
+                    android:paddingLeft="15dp"></EditText>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:textSize="20dp"
-                        android:text="Latter or assuarance">
-                    </TextView>
+                        android:layout_gravity="center"
+                        android:text="Latter or assuarance"
+                        android:textSize="20dp"></TextView>
 
                     <ImageView
-                        android:src="@drawable/upload"
                         android:id="@+id/LaterImage"
                         android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
                         android:scaleType="centerCrop"
-                        android:layout_height="50dp">
+                        android:src="@drawable/upload">
 
                     </ImageView>
 
                 </LinearLayout>
+
                 <Button
-                    android:layout_width="match_parent"
+                    android:id="@+id/BtnVerify"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Verify"
-                    android:id="@+id/BtnVerify">
+                    android:layout_gravity="center"
+                    android:background="@drawable/btn_cus"
+                    android:text="Verify">
 
 
                 </Button>
-
-
-
 
 
             </LinearLayout>
