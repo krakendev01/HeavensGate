@@ -31,7 +31,7 @@ class donsignup : AppCompatActivity() {
         binding.btnotp.setOnClickListener {
             FirebaseDatabase.getInstance().reference.child("users")
                 .child(binding.edphn.text.toString())
-                .setValue(User(binding.edphn.text.toString(),binding.edml.text.toString(),binding.ednm.text.toString()))
+                .setValue(User(binding.edphn.text.toString(),binding.edml.text.toString(),binding.ednm.text.toString(),"DON"))
 
 
         }

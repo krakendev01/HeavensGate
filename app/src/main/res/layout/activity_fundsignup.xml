@@ -36,6 +36,7 @@
             </EditText>
             <EditText
                 android:id="@+id/Phone"
+                android:inputType="number"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:hint="Phone">
@@ -129,13 +130,12 @@
                     android:layout_height="50dp"
                     android:hint="State">
                 </EditText>
-                <Spinner
+                <EditText
                     android:id="@+id/Country"
-
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:hint="Country">
-                </Spinner>
+                </EditText>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

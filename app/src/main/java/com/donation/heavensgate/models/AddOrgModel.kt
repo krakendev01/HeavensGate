@@ -1,4 +1,4 @@
-package com.donation.heavensgate.Models
+package com.donation.heavensgate.models
 
 data class AddOrgModel(
     val Org_Id:String? = "",
@@ -9,6 +9,7 @@ data class AddOrgModel(
     val Org_Address:String? = "",
     val Org_City:String? = "",
     val Org_State:String? = "",
+    val Org_Country:String? = "",
     val Org_Latter:String? = "",
     val Org_Images:ArrayList<String>
 
