@@ -180,16 +180,7 @@
         app:srcCompat="@drawable/loginillu"
         tools:srcCompat="@drawable/loginillu" />
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/pb1"-->
-<!--        style="?android:attr/progressBarStyle"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="304dp"-->
-<!--        android:layout_marginEnd="182dp"-->
-<!--        android:requiresFadingEdge="vertical"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
+
 
 
 

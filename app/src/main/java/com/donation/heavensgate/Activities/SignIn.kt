@@ -136,13 +136,4 @@ class SignIn : AppCompatActivity() {
     }
 
 
-
-    // [END sign_in_with_phone]
-
-    fun sendtoMain() {
-
-        startActivity(Intent(this,MainActivity::class.java))
-
-    }
-
 }
