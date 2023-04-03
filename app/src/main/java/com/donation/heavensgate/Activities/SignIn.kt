@@ -33,7 +33,9 @@ class SignIn : AppCompatActivity() {
 
         auth= FirebaseAuth.getInstance()
         ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.INTERNET),10)
-
+        binding.BtnOrgSignin.setOnClickListener {
+            startActivity(Intent(this@SignIn,Fund_SignIn::class.java))
+        }
 
         binding.btnotp.setOnClickListener(View.OnClickListener {
             if (binding.phn.text.isEmpty())

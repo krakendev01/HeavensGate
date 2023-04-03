@@ -115,16 +115,34 @@ class fundsignup : AppCompatActivity() {
         }
         binding.BtnNext.setOnClickListener {
             if (validateBasicData()) {
-                FirebaseDatabase.getInstance().reference.child("users")
-                    .child(binding.Phone.text.toString())
-                    .setValue(User(binding.Phone.text.toString(),binding.Email.text.toString(),binding.OrgName.text.toString(),"NGO"))
 
+                createuser(binding.Email.text.toString(),binding.Pass.text.toString())
 
                 binding.BasicCard.visibility = INVISIBLE
                 binding.DetailedCard.visibility = VISIBLE
             }
         }
 
+    }
+
+    private fun createuser(Email: String, Pass: String) {
+        auth.createUserWithEmailAndPassword(Email, Pass)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "createUserWithEmail:success")
+                    Toast.makeText(baseContext, "Authentication Successfull.",
+                        Toast.LENGTH_SHORT).show()
+                    val user = auth.currentUser
+
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed."+task.exception,
+                        Toast.LENGTH_SHORT).show()
+                    updateUI(null)
+                }
+            }
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {
@@ -206,6 +224,7 @@ class fundsignup : AppCompatActivity() {
             key,
             binding.OrgName.text.toString(),
             binding.Email.text.toString(),
+            binding.Pass.text.toString(),
             binding.Phone.text.toString(),
             binding.Details.text.toString(),
             binding.Address.text.toString(),
@@ -219,13 +238,14 @@ class fundsignup : AppCompatActivity() {
 
             binding.OrgName.text=null
             binding.Email.text=null
+            binding.Pass.text=null
             binding.Phone.text=null
             binding.Details.text=null
             binding.Address.text=null
             binding.City.text=null
             binding.State.text=null
             binding.Country.text=null
-            latterImageUri=null
+            binding.LaterImage.setImageURI(null)
 
 
 
@@ -250,6 +270,14 @@ class fundsignup : AppCompatActivity() {
         }else if (binding.Email.text.toString().isEmpty()){
             binding.Email.requestFocus()
             binding.Email.error="Please Enter a Email"
+        }
+        else if (binding.Pass.text.toString().isEmpty()){
+            binding.Pass.requestFocus()
+            binding.Pass.error="Please Create A New Password"
+        }
+        else if (binding.CnPass.text.toString().isEmpty() || binding.CnPass.text != binding.Pass.text){
+            binding.CnPass.requestFocus()
+            binding.CnPass.error="Password Doesn't Match"
         }
         else
         {

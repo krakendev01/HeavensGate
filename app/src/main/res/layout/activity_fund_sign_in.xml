@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.fundsignup">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/BasicCard"
+        android:layout_width="355dp"
+        android:layout_height="700dp"
+        android:visibility="visible"
+        app:circularflow_radiusInDP="30dp"
+       android:scrollbarAlwaysDrawVerticalTrack="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                android:text="Sing In As Organisation"
+                android:textColor="#214583"
+                android:textSize="28dp"
+                android:textStyle="bold">
+
+            </TextView>
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:src="@drawable/loginillu"
+                android:layout_marginBottom="20dp">
+
+            </ImageView>
+
+            <EditText
+                android:id="@+id/OrgEmail"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_cus"
+                android:hint="Enter Email"
+                android:paddingLeft="15dp">
+
+            </EditText>
+
+
+
+            <EditText
+                android:id="@+id/OrgPass"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+
+                android:background="@drawable/edt_cus"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingLeft="15dp">
+
+            </EditText>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_height="50dp">
+
+                <Button
+                    android:id="@+id/Btn_Signin"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/btn_cus"
+                    android:shadowRadius="100"
+                    android:text="SignIn">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

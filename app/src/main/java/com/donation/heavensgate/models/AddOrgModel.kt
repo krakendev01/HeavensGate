@@ -4,6 +4,7 @@ data class AddOrgModel(
     val Org_Id:String? = "",
     val Org_Name:String? = "",
     val Org_Email:String? = "",
+    val Org_Pass:String? = "",
     val Org_Phone:String? = "",
     val Org_Description:String? = "",
     val Org_Address:String? = "",
