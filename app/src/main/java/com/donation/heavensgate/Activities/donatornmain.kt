@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.donation.heavensgate.R
 import com.donation.heavensgate.adapter.DonatorMainOrgDisplayAdapter
@@ -39,5 +40,29 @@ class donatornmain : AppCompatActivity() {
                 Log.d("DB ERROR", "Error getting documents: ", exception)
             }
         binding.OrgList.layoutManager = LinearLayoutManager(this)
+        ArrayAdapter.createFromResource(
+                this,
+        R.array.countries,
+        android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.countrySp.adapter = adapter
+        }
+        ArrayAdapter.createFromResource(
+                this,
+        R.array.states,
+        android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.stateSp.adapter = adapter
+        }
+        ArrayAdapter.createFromResource(
+                this,
+        R.array.district,
+        android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.districtSp.adapter = adapter
+        }
     }
 }

@@ -5,12 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.donatornmain">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+                android:id="@+id/filter_layout"
+                android:orientation="horizontal"
+            android:paddingVertical="5dp"
+            app:layout_constraintTop_toTopOf="parent">
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                        android:id="@+id/country_sp"
+                    tools:prompt="Select Country"/>
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:prompt="Select State"
+                        android:id="@+id/state_sp"/>
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:prompt="Select Bharuch"
+                        android:id="@+id/district_sp"/>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/OrgList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/filter_layout"
             tools:listitem="@layout/orglist_layout">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -18,8 +40,9 @@
             android:layout_width="50dp"
             android:id="@+id/progress_bar_OrgList"
             android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="@id/OrgList"
-            app:layout_constraintBottom_toBottomOf="@id/OrgList"
-            app:layout_constraintTop_toTopOf="@+id/OrgList"
-            app:layout_constraintEnd_toEndOf="@id/OrgList"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 </androidx.constraintlayout.widget.ConstraintLayout>

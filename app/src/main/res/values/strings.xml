@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name" translatable="false">Heaven\'s Gate</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <array name="countries">
+        <item>India</item>
+        <item>Pakistan</item>
+    </array>
+    <array name="states">
+        <item>Gujarat</item>
+    </array>
+    <array name="district">
+        <item>Bharuch</item>
+    </array>
 </resources>
