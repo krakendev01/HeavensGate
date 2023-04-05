@@ -28,7 +28,6 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"

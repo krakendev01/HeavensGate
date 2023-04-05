@@ -5,25 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.donatornmain">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/OrgList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             tools:listitem="@layout/orglist_layout">
 
         </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
+        <ProgressBar
+            android:layout_width="50dp"
+            android:id="@+id/progress_bar_OrgList"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="@id/OrgList"
+            app:layout_constraintBottom_toBottomOf="@id/OrgList"
+            app:layout_constraintTop_toTopOf="@+id/OrgList"
+            app:layout_constraintEnd_toEndOf="@id/OrgList"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
