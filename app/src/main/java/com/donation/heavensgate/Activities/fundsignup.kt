@@ -25,6 +25,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.sql.Time
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Date
 import java.util.UUID
 
 class fundsignup : AppCompatActivity() {
@@ -176,9 +181,12 @@ class fundsignup : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun uploadImage() {
+        val formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+        val time=LocalDateTime.now().format(formatter)
         val filename=UUID.randomUUID().toString()+".jpg"
-        val refStorage=FirebaseStorage.getInstance().reference.child("Latter $filename")
+        val refStorage=FirebaseStorage.getInstance().reference.child("Latter $time $filename")
         refStorage.putFile(latterImage!!)
             .addOnSuccessListener {
                 it.storage.downloadUrl.addOnSuccessListener{ image ->
@@ -192,9 +200,12 @@ class fundsignup : AppCompatActivity() {
     }
 
     private var i = 0
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun uploadOrgImage() {
+        val formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+        val time=LocalDateTime.now().format(formatter)
         val filename=UUID.randomUUID().toString()+".jpg"
-        val refStorage=FirebaseStorage.getInstance().reference.child("Organisations $filename")
+        val refStorage=FirebaseStorage.getInstance().reference.child("Org $time $filename")
         refStorage.putFile(list[i]!!)
             .addOnSuccessListener {
                 it.storage.downloadUrl.addOnSuccessListener{image ->
@@ -217,8 +228,10 @@ class fundsignup : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun storeData() {
-        val db= Firebase.firestore.collection("Organisations")
+
+        val db= Firebase.firestore.collection("Organisation")
         val key = db.document().id
         val data= AddOrgModel(
             key,
