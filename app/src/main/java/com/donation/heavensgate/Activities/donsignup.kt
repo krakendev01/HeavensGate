@@ -16,6 +16,7 @@ class donsignup : AppCompatActivity() {
         binding= ActivityDonsignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.btnotp.setOnClickListener {
             FirebaseDatabase.getInstance().reference.child("users")
                 .child(binding.edphn.text.toString())
@@ -23,4 +24,5 @@ class donsignup : AppCompatActivity() {
         }
 
     }
+
 }
