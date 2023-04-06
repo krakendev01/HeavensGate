@@ -220,14 +220,12 @@ class fundsignup : AppCompatActivity() {
             binding.OrgName.text=null
             binding.Email.text=null
             binding.Phone.text=null
-
             binding.Details.text=null
             binding.Address.text=null
             binding.City.text=null
             binding.State.text=null
             binding.Country.text=null
-
-
+            latterImageUri=null
 
 
 

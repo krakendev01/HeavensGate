@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.SignIn">
@@ -29,8 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="0dp"
-                android:text="Welcome back"
+                android:layout_marginBottom="20dp"
+                android:text="Welcome back to Donate"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="#214583"
@@ -42,6 +43,7 @@
                 android:layout_width="348dp"
                 android:layout_height="51dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_cus"
                 android:drawableStart="@drawable/baseline_local_phone_24"
                 android:drawablePadding="15dp"
@@ -54,45 +56,54 @@
                 android:id="@+id/btnotp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_gravity="center"
-                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_cus"
                 android:text="Get Otp"
                 android:textStyle="bold" />
+            <Button
+                android:id="@+id/Btn_Org_Signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="SingIn As a Organisation"
+                android:background="@drawable/btn_cus"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/verify_materialCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="invisible"
-        android:layout_marginTop="0dp"
-        app:layout_constraintTop_toBottomOf="@id/imageView4">
+        app:layout_constraintTop_toBottomOf="@id/imageView4"
+        app:layout_constraintVertical_bias="0.17000002">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:orientation="vertical">
+
             <TextView
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:text="Welcome back"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                android:text="Enter OTP"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="#214583"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/et_OTP"
@@ -110,13 +121,11 @@
                 android:id="@+id/VerifyOTP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_gravity="center"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/btn_cus"
                 android:text="Verify Otp"
                 android:textStyle="bold" />
-
 
 
         </LinearLayout>
@@ -139,9 +148,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
-
-
-
 
 
     <TextView
@@ -172,8 +178,8 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginTop="76dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -182,16 +188,6 @@
         app:srcCompat="@drawable/loginillu"
         tools:srcCompat="@drawable/loginillu" />
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/pb1"-->
-<!--        style="?android:attr/progressBarStyle"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="304dp"-->
-<!--        android:layout_marginEnd="182dp"-->
-<!--        android:requiresFadingEdge="vertical"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
 
 
 
