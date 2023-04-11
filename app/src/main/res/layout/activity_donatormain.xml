@@ -5,44 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.donatornmain">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-                android:id="@+id/filter_layout"
-                android:orientation="horizontal"
-            android:paddingVertical="5dp"
-            app:layout_constraintTop_toTopOf="parent">
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                        android:id="@+id/country_sp"
-                    tools:prompt="Select Country"/>
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:prompt="Select State"
-                        android:id="@+id/state_sp"/>
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:prompt="Select Bharuch"
-                        android:id="@+id/district_sp"/>
-        </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/OrgList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/filter_layout"
+            android:layout_height="match_parent"
+            android:layout_marginTop="150dp"
+            android:orientation="horizontal"
             tools:listitem="@layout/orglist_layout">
 
         </androidx.recyclerview.widget.RecyclerView>
-        <ProgressBar
-            android:layout_width="50dp"
-            android:id="@+id/progress_bar_OrgList"
-            android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/filter_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+    </LinearLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frafmentcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:navGraph="@navigation/nav"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        />
+
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:iconSize="20dp"
+        app:backgroundColor="@color/colorPrimary"
+        app:indicatorRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

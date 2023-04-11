@@ -180,7 +180,7 @@ class fundsignup : AppCompatActivity() {
         refStorage.putFile(list[i]!!)
             .addOnSuccessListener {
                 it.storage.downloadUrl.addOnSuccessListener{image ->
-                    listImages.add(image.toString())
+                    listImages.add(image!!.toString())
                     if (list.size==listImages.size){
                         storeData()
                     }
@@ -206,6 +206,7 @@ class fundsignup : AppCompatActivity() {
             key,
             binding.OrgName.text.toString(),
             binding.Email.text.toString(),
+            binding.Pass.toString(),
             binding.Phone.text.toString(),
             binding.Details.text.toString(),
             binding.Address.text.toString(),
@@ -213,7 +214,8 @@ class fundsignup : AppCompatActivity() {
             binding.State.text.toString(),
             binding.Country.text.toString(),
             latterImageUri.toString(),
-            listImages)
+            listImages,
+        )
         db.document(key).set(data)
             .addOnSuccessListener{
 
@@ -226,7 +228,6 @@ class fundsignup : AppCompatActivity() {
             binding.State.text=null
             binding.Country.text=null
             latterImageUri=null
-
 
 
                 Toast.makeText(this,"Organisation Added Successfully",Toast.LENGTH_SHORT).show()

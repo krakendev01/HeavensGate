@@ -52,7 +52,9 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            android:resource="@array/preloaded_fonts"
+            android:value="@integer/google_play_services_version"/>
+
     </application>
 
 </manifest>

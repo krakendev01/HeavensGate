@@ -2,67 +2,40 @@ package com.donation.heavensgate.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.ArrayAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.PopupMenu
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.fragment.findNavController
 import com.donation.heavensgate.R
-import com.donation.heavensgate.adapter.DonatorMainOrgDisplayAdapter
 import com.donation.heavensgate.databinding.ActivityDonatormainBinding
-import com.donation.heavensgate.models.AddOrgModel
-import com.donation.heavensgate.utils.OrgDataSets
-import com.google.firebase.firestore.FirebaseFirestore
 
 class donatornmain : AppCompatActivity() {
-    lateinit var binding : ActivityDonatormainBinding
+    private lateinit var binding : ActivityDonatormainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDonatormainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val list = mutableListOf<AddOrgModel>()
-        val db = FirebaseFirestore.getInstance()
-        db.collection("Organisations")
-            .get()
-            .addOnSuccessListener { value ->
-                binding.progressBarOrgList.visibility = View.GONE
-                runOnUiThread {
-                    for (i in value) {
-                        var org: AddOrgModel? = i.toObject(AddOrgModel::class.java)
-                        list.add(org!!)
-                    }
-                    Log.d("ORG LIST", list.toString())
-//                        Log.d("Org list in interface",orgList.toString())
+
+        val naveHostFragment = supportFragmentManager.findFragmentById(R.id.frafmentcontainer)
+        val navController = naveHostFragment!!.findNavController()
+
+        val popupMenu= PopupMenu(this, null)
+        popupMenu.inflate(R.menu.bottom_nav)
+        binding.bottomBar.setupWithNavController(popupMenu.menu,navController)
+
+        navController.addOnDestinationChangedListener(object : NavController.OnDestinationChangedListener{
+            override fun onDestinationChanged(
+                controller: NavController,
+                destination: NavDestination,
+                arguments: Bundle?
+            ) {
+                title = when(destination.id){
+                    R.id.searchfragment -> "search"
+                    R.id.profileFragment -> "My Profile"
+                    else -> "Donation"
                 }
-                var donAdapter = DonatorMainOrgDisplayAdapter(list)
-                binding.OrgList.adapter = donAdapter
-                donAdapter.notifyDataSetChanged()
-            }.addOnFailureListener { exception ->
-                Log.d("DB ERROR", "Error getting documents: ", exception)
             }
-        binding.OrgList.layoutManager = LinearLayoutManager(this)
-        ArrayAdapter.createFromResource(
-                this,
-        R.array.countries,
-        android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.countrySp.adapter = adapter
-        }
-        ArrayAdapter.createFromResource(
-                this,
-        R.array.states,
-        android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.stateSp.adapter = adapter
-        }
-        ArrayAdapter.createFromResource(
-                this,
-        R.array.district,
-        android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.districtSp.adapter = adapter
-        }
+
+        })
     }
 }

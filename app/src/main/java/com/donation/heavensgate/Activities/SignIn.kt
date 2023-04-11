@@ -126,10 +126,10 @@ class SignIn : AppCompatActivity() {
 
                 override fun onDataChange(p0: DataSnapshot) {
                     if (p0.exists()) {
-                        startActivity(Intent(this@SignIn,MainActivity::class.java))
+                        startActivity(Intent(this@SignIn,donatornmain::class.java))
                         finish()
                     } else {
-                        startActivity(Intent(this@SignIn,MainActivity::class.java))
+                        startActivity(Intent(this@SignIn,donatornmain::class.java))
                         finish()
                     }
                 }
