@@ -7,27 +7,7 @@
     tools:context=".Activities.donatornmain">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/OrgList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="150dp"
-            android:orientation="horizontal"
-            tools:listitem="@layout/orglist_layout">
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frafmentcontainer"
@@ -44,7 +24,7 @@
         app:iconSize="20dp"
         app:backgroundColor="@color/colorPrimary"
         app:indicatorRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav" />
 
