@@ -15,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "85296560625-ug21lr3ljfuvka5ftq41ue6d6jikih8q.apps.googleusercontent.com",
+          "client_id": "85296560625-47go9km0uel1vprtaoqbjvomv2kd9bj1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.donation.heavensgate",
+            "certificate_hash": "7f296fcb303b63d2ff8a4cd3f515072d9cd90610"
+          }
+        },
+        {
+          "client_id": "85296560625-trtnekfv27tr8o3csea0dmiupo752aob.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.donation.heavensgate",

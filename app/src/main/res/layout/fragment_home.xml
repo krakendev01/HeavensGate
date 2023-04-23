@@ -20,8 +20,8 @@
             android:id="@+id/OrgList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="0dp"
-            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             tools:listitem="@layout/orglist_layout">
 
         </androidx.recyclerview.widget.RecyclerView>

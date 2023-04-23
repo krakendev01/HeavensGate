@@ -94,16 +94,17 @@ class SignIn : AppCompatActivity() {
                 binding.verifyMaterialCardView.visibility = VISIBLE
             }
         }
-
+        auth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber("+91$number")       // Phone number to verify
             .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
             .setActivity(this)                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+            .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
