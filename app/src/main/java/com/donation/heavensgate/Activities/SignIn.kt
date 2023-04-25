@@ -195,6 +195,9 @@ class SignIn : AppCompatActivity() {
                 }
             }*/
 
+    binding.signup.setOnClickListener {
+        startActivity(Intent(this,Choice::class.java))
+    }
 }
 
     private fun donatorSingIn(email: String, password: String) {
