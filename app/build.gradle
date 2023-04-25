@@ -92,4 +92,9 @@ dependencies {
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //Circular ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+
 }

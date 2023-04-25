@@ -15,7 +15,23 @@
       },
       "oauth_client": [
         {
-          "client_id": "85296560625-47go9km0uel1vprtaoqbjvomv2kd9bj1.apps.googleusercontent.com",
+          "client_id": "85296560625-37oiqtd9ai31s8ammvmt0ft7o1g58q4g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.donation.heavensgate",
+            "certificate_hash": "d67de8e9c659cd067166cafa07d4b59f765e67f9"
+          }
+        },
+        {
+          "client_id": "85296560625-kh5fbgdsm53hb281o5vk1r10sgo2bm90.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.donation.heavensgate",
+            "certificate_hash": "e2ef815f19b6ffcc9ac00d212ebb9693d98de9d9"
+          }
+        },
+        {
+          "client_id": "85296560625-s0aruse65ieva4chsfa62aetcec0gk57.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.donation.heavensgate",
@@ -23,11 +39,11 @@
           }
         },
         {
-          "client_id": "85296560625-trtnekfv27tr8o3csea0dmiupo752aob.apps.googleusercontent.com",
+          "client_id": "85296560625-tc78f6f6tbd0irpk827tmrdlgh7md5if.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.donation.heavensgate",
-            "certificate_hash": "e2ef815f19b6ffcc9ac00d212ebb9693d98de9d9"
+            "certificate_hash": "7cceb109e745c4867e0f48c170004519839ca310"
           }
         },
         {
