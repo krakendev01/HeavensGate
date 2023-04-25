@@ -156,10 +156,11 @@ class fundsignup : AppCompatActivity() {
         else{
             pd.show()
 
-            uploadOrgImage()
+            uploadImage()
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun uploadImage() {
         val filename=UUID.randomUUID().toString()+".jpg"
         val refStorage=FirebaseStorage.getInstance().reference.child("Latter $filename")
@@ -168,12 +169,14 @@ class fundsignup : AppCompatActivity() {
                 it.storage.downloadUrl.addOnSuccessListener{ image ->
                     latterImageUri=image.toString()
                     Toast.makeText(this,latterImageUri,Toast.LENGTH_SHORT).show()
+                    uploadLogoImage()
                 }
             }
             .addOnFailureListener{
                 Toast.makeText(this@fundsignup,"error in upload latter image",Toast.LENGTH_SHORT).show()
             }
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun uploadLogoImage() {
         val filename=UUID.randomUUID().toString()+".jpg"
         val refStorage=FirebaseStorage.getInstance().reference.child("Logo $filename")
@@ -182,6 +185,7 @@ class fundsignup : AppCompatActivity() {
                 it.storage.downloadUrl.addOnSuccessListener{ image ->
                     logoUri=image.toString()
                 }
+                uploadOrgImage()
             }
             .addOnFailureListener{
                 Toast.makeText(this@fundsignup,"error in upload logo image",Toast.LENGTH_SHORT).show()
