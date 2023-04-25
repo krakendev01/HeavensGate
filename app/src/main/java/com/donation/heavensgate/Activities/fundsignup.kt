@@ -18,6 +18,7 @@ import com.donation.heavensgate.MainActivity
 import com.donation.heavensgate.adapter.AddOrgImageAdapter
 import com.donation.heavensgate.databinding.ActivityFundsignupBinding
 import com.donation.heavensgate.models.AddOrgModel
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
@@ -191,6 +192,17 @@ class fundsignup : AppCompatActivity() {
                 Toast.makeText(this@fundsignup,"error in upload logo image",Toast.LENGTH_SHORT).show()
             }
     }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun uploadImageNew(file: Uri): Task<Uri> {
+        val storageRef=FirebaseStorage.getInstance().reference
+        val imageRef = storageRef.child("images/${LocalDateTime.now()}")
+        return imageRef.putFile(file).continueWithTask { task ->
+            if (!task.isSuccessful) {
+                task.exception?.let { throw it }
+            }
+            imageRef.downloadUrl
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun uploadOrgImage() {
@@ -198,24 +210,8 @@ class fundsignup : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    list.forEach{
-                        val refStorage=FirebaseStorage.getInstance().reference.child(LocalDateTime.now().toString())
-                        refStorage.putFile(it)
-                            .addOnSuccessListener {it1 ->
-                                it1.storage.downloadUrl.addOnSuccessListener{image ->
-                                    listImages.add(image!!.toString())
-                                    Toast.makeText(this@fundsignup,listImages.toString(),Toast.LENGTH_SHORT).show()
-                                    Log.d("key",listImages.toString())
-
-                                }
-                            }
-                            .addOnFailureListener{
-                                Toast.makeText(this@fundsignup,"error in upload org image",Toast.LENGTH_SHORT).show()
-                            }
-                    }
 
 
-                    storeData(task.result.user!!.uid.toString())
                     Log.d(ContentValues.TAG, "signInAnonymously:success")
 
                 } else {
