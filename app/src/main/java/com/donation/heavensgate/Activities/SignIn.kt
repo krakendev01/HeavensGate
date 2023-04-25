@@ -12,6 +12,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignIn : AppCompatActivity() {
     lateinit var binding:ActivitySigninBinding
@@ -53,9 +54,17 @@ class SignIn : AppCompatActivity() {
             donatorSingIn(binding.Email.text.toString(),binding.Pass.text.toString())
         }
     }
+        if (auth.currentUser!=null){
+            Log.d("uid",auth.currentUser!!.uid.toString())
+            if(checkOrg(auth.currentUser!!.uid.toString())){
+                startActivity(Intent(this,Choice::class.java))
+            }else{
+                startActivity(Intent(this,donatornmain::class.java))
+            }
+        }
 
 
-    // in futture inshallah
+    // in future inshallah
 
     /*auth.firebaseAuthSettings.forceRecaptchaFlowForTesting(false)
         ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.INTERNET),10)
@@ -198,7 +207,24 @@ class SignIn : AppCompatActivity() {
     binding.signup.setOnClickListener {
         startActivity(Intent(this,Choice::class.java))
     }
+        binding.BtnOrgSignin.setOnClickListener {
+            startActivity(Intent(this,Fund_SignIn::class.java))
+        }
 }
+
+    private fun checkOrg(uid: String) : Boolean{
+        val db = FirebaseFirestore.getInstance()
+        var flag = false
+        db.collection("Organisations")
+            .whereEqualTo("uid",uid)
+            .get()
+            .addOnSuccessListener {
+                if (!it.isEmpty){
+                    flag = true
+                }
+            }
+        return flag
+    }
 
     private fun donatorSingIn(email: String, password: String) {
 
@@ -208,6 +234,7 @@ class SignIn : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
+                    startActivity(Intent(this,donatornmain::class.java))
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -236,6 +263,4 @@ class SignIn : AppCompatActivity() {
             })
 
     }
-
-
 }

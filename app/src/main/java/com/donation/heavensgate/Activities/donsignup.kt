@@ -1,10 +1,11 @@
 package com.donation.heavensgate.Activities
 
 import android.content.ContentValues.TAG
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.donation.heavensgate.databinding.ActivityDonsignupBinding
 import com.donation.heavensgate.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +22,7 @@ class donsignup : AppCompatActivity() {
         binding= ActivityDonsignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth= FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
 
         binding.btnotp.setOnClickListener {
 
@@ -31,7 +33,9 @@ class donsignup : AppCompatActivity() {
                 database.getReference("users")
                     .child("donators")
                     .child(auth.uid.toString())
-                    .setValue(user)
+                    .setValue(user).addOnSuccessListener {
+                        startActivity(Intent(this,donatornmain::class.java))
+                    }
             }
 
 

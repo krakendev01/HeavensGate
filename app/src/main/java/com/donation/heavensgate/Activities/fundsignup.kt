@@ -3,7 +3,7 @@ package com.donation.heavensgate.Activities
 import android.app.Activity
 import android.app.Dialog
 import android.app.ProgressDialog
-import android.content.ContentValues.TAG
+import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -18,9 +18,7 @@ import com.donation.heavensgate.MainActivity
 import com.donation.heavensgate.adapter.AddOrgImageAdapter
 import com.donation.heavensgate.databinding.ActivityFundsignupBinding
 import com.donation.heavensgate.models.AddOrgModel
-import com.donation.heavensgate.models.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
@@ -95,9 +93,7 @@ class fundsignup : AppCompatActivity() {
             intent.type="image/*"
             launchLogoImageActivity.launch(intent)
         }
-        binding.oname.text = binding.OrgName.text.toString()
-        binding.ophone.text = binding.Phone.text.toString()
-        binding.oemail.text = binding.Email.text.toString()
+
 
 
 
@@ -106,23 +102,6 @@ class fundsignup : AppCompatActivity() {
         auth = Firebase.auth
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
-        auth.signInAnonymously()
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInAnonymously:success")
-                    val user = auth.currentUser
-                    updateUI(currentUser)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInAnonymously:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    updateUI(currentUser)
-                }
-            }
 
 
         adapter= AddOrgImageAdapter(list)
@@ -133,12 +112,11 @@ class fundsignup : AppCompatActivity() {
             validateAllData()
         }
         binding.BtnNext.setOnClickListener {
+
+            binding.oname.text = binding.OrgName.text.toString()
+            binding.ophone.text = binding.Phone.text.toString()
+            binding.oemail.text = binding.Email.text.toString()
             if (validateBasicData()) {
-                FirebaseDatabase.getInstance().reference.child("users")
-                    .child(binding.Phone.text.toString())
-                    .setValue(User(binding.Phone.text.toString(),binding.Email.text.toString(),binding.OrgName.text.toString(),"NGO"))
-
-
                 binding.BasicCard.visibility = INVISIBLE
                 binding.DetailedCard.visibility = VISIBLE
             }
@@ -147,9 +125,7 @@ class fundsignup : AppCompatActivity() {
         pd.setTitle("Creating Organization")
     }
 
-    private fun updateUI(currentUser: FirebaseUser?) {
-        Toast.makeText(this@fundsignup,"current user : \n $currentUser",Toast.LENGTH_SHORT).show()
-    }
+
 
 
 
@@ -190,7 +166,7 @@ class fundsignup : AppCompatActivity() {
             .addOnSuccessListener {
                 it.storage.downloadUrl.addOnSuccessListener{ image ->
                     latterImageUri=image.toString()
-
+                    Toast.makeText(this,latterImageUri,Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener{
@@ -211,33 +187,38 @@ class fundsignup : AppCompatActivity() {
             }
     }
 
-    private var i = 0
     private fun uploadOrgImage() {
-        val filename=UUID.randomUUID().toString()+".jpg"
-        val refStorage=FirebaseStorage.getInstance().reference.child("Organisations $filename")
-        refStorage.putFile(list[i]!!)
-            .addOnSuccessListener {
-                it.storage.downloadUrl.addOnSuccessListener{image ->
-                    listImages.add(image!!.toString())
-                    if (list.size==listImages.size){
-                        storeData()
+        auth.createUserWithEmailAndPassword(binding.Email.text.toString().trim(),binding.Pass.text.toString().trim())
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+
+                    list.forEach{
+                        val refStorage=FirebaseStorage.getInstance().reference.child("org/Organisations $it")
+                        refStorage.putFile(it)
+                            .addOnSuccessListener {it1 ->
+                                it1.storage.downloadUrl.addOnSuccessListener{image ->
+                                    listImages.add(image!!.toString())
+                                }
+                            }
+                            .addOnFailureListener{
+                                Toast.makeText(this@fundsignup,"error in upload org image",Toast.LENGTH_SHORT).show()
+                            }
                     }
-                    else
-                    {
-                        i+=1
-                        uploadOrgImage()
-                    }
+                    storeData()
+                    Log.d(ContentValues.TAG, "signInAnonymously:success")
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(ContentValues.TAG, "signInAnonymously:failure", task.exception)
+                    Toast.makeText(baseContext, task.exception?.message.toString(),
+                        Toast.LENGTH_SHORT).show()
                 }
-            }
-            .addOnFailureListener{
-                Toast.makeText(this@fundsignup,"error in upload org image",Toast.LENGTH_SHORT).show()
             }
     }
     private fun storeData() {
         val db= Firebase.firestore.collection("Organisations")
-        val key = db.document().id
         val data= AddOrgModel(
-            key,
+            auth.uid.toString(),
             binding.OrgName.text.toString(),
             binding.Email.text.toString(),
             binding.Pass.text.toString(),
@@ -255,7 +236,7 @@ class fundsignup : AppCompatActivity() {
             logoUri.toString(),
             listImages,
         )
-        db.document(key).set(data)
+        db.document(auth.uid.toString()).set(data)
             .addOnSuccessListener{
             pd.hide()
                 Toast.makeText(this,"Organisation Added Successfully",Toast.LENGTH_SHORT).show()
