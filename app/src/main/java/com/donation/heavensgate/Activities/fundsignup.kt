@@ -2,21 +2,22 @@ package com.donation.heavensgate.Activities
 
 import android.app.Activity
 import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View.*
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.donation.heavensgate.MainActivity
-import com.donation.heavensgate.models.AddOrgModel
 import com.donation.heavensgate.adapter.AddOrgImageAdapter
 import com.donation.heavensgate.databinding.ActivityFundsignupBinding
+import com.donation.heavensgate.models.AddOrgModel
 import com.donation.heavensgate.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -25,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import java.util.UUID
+import java.util.*
 
 class fundsignup : AppCompatActivity() {
     lateinit var binding: ActivityFundsignupBinding
@@ -37,6 +38,8 @@ class fundsignup : AppCompatActivity() {
     private var latterImage:Uri?=null
     private lateinit var dialog: Dialog
     private var latterImageUri:String?=""
+    private var logoUri:String?=""
+    lateinit var pd : ProgressDialog
     private var launchLatterActivity=registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ){
@@ -44,6 +47,14 @@ class fundsignup : AppCompatActivity() {
             latterImage= it.data!!.data
             binding.LaterImage.setImageURI(latterImage)
             binding.LaterImage.visibility=VISIBLE
+        }
+    }
+    private var launchLogoImageActivity=registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ){
+        if (it.resultCode== Activity.RESULT_OK){
+            logoUri= it.data!!.data.toString()
+            binding.logoIv.setImageURI(Uri.parse(logoUri))
         }
     }
     private var launchOrgActivity=registerForActivityResult(
@@ -79,6 +90,14 @@ class fundsignup : AppCompatActivity() {
             intent.type="image/*"
             launchLatterActivity.launch(intent)
         }
+        binding.btnUploadLogo.setOnClickListener{
+            val intent=Intent("android.intent.action.GET_CONTENT")
+            intent.type="image/*"
+            launchLogoImageActivity.launch(intent)
+        }
+        binding.oname.text = binding.OrgName.text.toString()
+        binding.ophone.text = binding.Phone.text.toString()
+        binding.oemail.text = binding.Email.text.toString()
 
 
 
@@ -124,12 +143,15 @@ class fundsignup : AppCompatActivity() {
                 binding.DetailedCard.visibility = VISIBLE
             }
         }
-
+        pd = ProgressDialog(this)
+        pd.setTitle("Creating Organization")
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {
         Toast.makeText(this@fundsignup,"current user : \n $currentUser",Toast.LENGTH_SHORT).show()
     }
+
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun validateAllData() {
@@ -154,7 +176,10 @@ class fundsignup : AppCompatActivity() {
             Toast.makeText(this@fundsignup,"please upload organisation Images",Toast.LENGTH_SHORT).show()
         }
         else{
+            pd.show()
+            uploadLogoImage()
             uploadImage()
+            uploadOrgImage()
         }
     }
 
@@ -165,11 +190,24 @@ class fundsignup : AppCompatActivity() {
             .addOnSuccessListener {
                 it.storage.downloadUrl.addOnSuccessListener{ image ->
                     latterImageUri=image.toString()
-                    uploadOrgImage()
+
                 }
             }
             .addOnFailureListener{
                 Toast.makeText(this@fundsignup,"error in upload latter image",Toast.LENGTH_SHORT).show()
+            }
+    }
+    private fun uploadLogoImage() {
+        val filename=UUID.randomUUID().toString()+".jpg"
+        val refStorage=FirebaseStorage.getInstance().reference.child("Logo $filename")
+        refStorage.putFile(Uri.parse(logoUri))
+            .addOnSuccessListener {
+                it.storage.downloadUrl.addOnSuccessListener{ image ->
+                    logoUri=image.toString()
+                }
+            }
+            .addOnFailureListener{
+                Toast.makeText(this@fundsignup,"error in upload logo image",Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -188,17 +226,13 @@ class fundsignup : AppCompatActivity() {
                     {
                         i+=1
                         uploadOrgImage()
-
                     }
-
                 }
             }
             .addOnFailureListener{
                 Toast.makeText(this@fundsignup,"error in upload org image",Toast.LENGTH_SHORT).show()
             }
-
     }
-
     private fun storeData() {
         val db= Firebase.firestore.collection("Organisations")
         val key = db.document().id
@@ -206,7 +240,7 @@ class fundsignup : AppCompatActivity() {
             key,
             binding.OrgName.text.toString(),
             binding.Email.text.toString(),
-            binding.Pass.toString(),
+            binding.Pass.text.toString(),
             binding.Phone.text.toString(),
             binding.Details.text.toString(),
             binding.Address.text.toString(),
@@ -214,27 +248,22 @@ class fundsignup : AppCompatActivity() {
             binding.State.text.toString(),
             binding.Country.text.toString(),
             latterImageUri.toString(),
+            binding.Principal.text.toString(),
+            false,
+            Integer.parseInt(binding.NoStaff.text.toString()),
+            Integer.parseInt(binding.NoStudent.text.toString()),
+            logoUri.toString(),
             listImages,
         )
         db.document(key).set(data)
             .addOnSuccessListener{
-
-            binding.OrgName.text=null
-            binding.Email.text=null
-            binding.Phone.text=null
-            binding.Details.text=null
-            binding.Address.text=null
-            binding.City.text=null
-            binding.State.text=null
-            binding.Country.text=null
-            latterImageUri=null
-
-
+            pd.hide()
                 Toast.makeText(this,"Organisation Added Successfully",Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this@fundsignup,MainActivity::class.java))
         }
 
             .addOnFailureListener {
+                pd.hide()
                 Toast.makeText(this,"Organisation add failed",Toast.LENGTH_SHORT).show()
 
             }

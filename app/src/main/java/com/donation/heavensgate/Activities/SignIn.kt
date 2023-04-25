@@ -163,6 +163,9 @@ class SignIn : AppCompatActivity() {
                 }
             }*/
 
+    binding.signup.setOnClickListener {
+        startActivity(Intent(this,Choice::class.java))
+    }
 }
     private fun checkuserExist(number: String) {
         FirebaseDatabase.getInstance().getReference("users").child("+91$number")
