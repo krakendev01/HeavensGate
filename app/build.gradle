@@ -91,4 +91,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
 
+    //Circular ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }
