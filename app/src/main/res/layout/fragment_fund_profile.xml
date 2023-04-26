@@ -3,4 +3,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fund_profile"/>
+    tools:context=".fund_profile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fund_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/account"
+            >
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:id="@+id/fund_namepro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="hello"
+            android:textColor="@color/black"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="10dp"
+            />
+
+        <TextView
+            android:id="@+id/fund_principlepro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="hello"
+            android:textColor="@color/black"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="10dp"
+            />
+
+        <TextView
+            android:id="@+id/fund_emailpro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="hello"
+            android:textColor="@color/black"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="10dp"
+            />
+
+        <TextView
+            android:id="@+id/fund_phonepro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="hello"
+            android:textColor="@color/black"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Images"
+            android:textColor="@color/black"
+            android:layout_marginVertical="15dp"
+            android:layout_marginHorizontal="10dp"
+            />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fund_pro_update_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</FrameLayout>
