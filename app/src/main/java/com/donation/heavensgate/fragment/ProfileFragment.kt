@@ -78,7 +78,7 @@ class ProfileFragment : Fragment() {
                         binding.ETPhone.setText(user.userPhoneNo)
                     }
                     override fun onCancelled(error: DatabaseError) {
-
+                        Toast.makeText(requireContext(),error.message,Toast.LENGTH_SHORT).show()
                     }
                 })
 

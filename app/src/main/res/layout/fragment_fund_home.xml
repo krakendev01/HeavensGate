@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fund_home">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/donatorlist"
@@ -12,8 +23,11 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/sample_donator_list"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical">
+        android:orientation="vertical"
+
+        >
     </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
 
 </FrameLayout>

@@ -6,13 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="392dp"
-        android:layout_marginEnd="156dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fundfragmentcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:navGraph="@navigation/fund_nav"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        />
+
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/fundbottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:iconSize="20dp"
+        app:backgroundColor="@color/colorPrimary"
+        app:indicatorRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/fund_bottom_nav" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

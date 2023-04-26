@@ -9,12 +9,12 @@
         android:id="@+id/HomeFragment"
         android:name="com.donation.heavensgate.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_fund_home" />
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/SearchFragment"
         android:name="com.donation.heavensgate.fragment.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_fund_profile" />
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/ProfileFragment"
         android:name="com.donation.heavensgate.fragment.ProfileFragment"

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/HomeFragment"
+    <item android:id="@+id/FundHomeFragment"
         android:title="Home"
         android:icon="@drawable/home"/>
+    
 
-    <item android:id="@+id/DonationFragment"
-        android:title="Donations"
-        android:icon="@drawable/direction"/>
-
-    <item android:id="@+id/ProfileFragment"
+    <item android:id="@+id/FundProfileFragment"
         android:title="Profile"
         android:icon="@drawable/account"/>
 

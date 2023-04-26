@@ -17,7 +17,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:cardCornerRadius="100dp">
-            <TextView
+                <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/cur_profile"
@@ -26,7 +26,6 @@
                 android:textColorHighlight="@color/white"
                 android:textAlignment="center"
                 android:autoSizeTextType="uniform"
-                android:background="@drawable/edt_cus"
                 android:textSize="40sp"/>
         </androidx.cardview.widget.CardView>
 
@@ -107,24 +106,7 @@
                 android:background="@drawable/edt_cus"
                 android:textSize="40sp"/>
         </androidx.cardview.widget.CardView>
-        <com.google.android.material.textfield.TextInputLayout
 
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name">
-
-            <!--this is the actual edit text which takes the input-->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ETName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edt_cus"
-
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/filledTextField"
 
@@ -132,13 +114,13 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:background="@drawable/edt_cus"
             android:hint="Email">
 
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ETEmail"
-                android:background="@drawable/edt_cus"
+
                 android:editable="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -147,18 +129,33 @@
         <com.google.android.material.textfield.TextInputLayout
 
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edt_cus"
+            android:hint="Name">
+            <!--this is the actual edit text which takes the input-->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-            android:hint="Enter something">
 
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edt_cus"
+            android:hint="Phone">
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ETPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edt_cus"/>
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 

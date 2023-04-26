@@ -30,9 +30,9 @@ class donatornmain : AppCompatActivity() {
                 arguments: Bundle?
             ) {
                 title = when(destination.id){
-                    R.id.SearchFragment -> "search"
+                    R.id.DonationFragment -> "Donations"
                     R.id.ProfileFragment -> "My Profile"
-                    else -> "Donation"
+                    else -> "Home"
                 }
             }
 
