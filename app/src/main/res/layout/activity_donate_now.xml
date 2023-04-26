@@ -112,6 +112,7 @@
                     android:layout_width="0dp"
                     android:hint="Enter Donation Amount"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:layout_weight="7" />
             </LinearLayout>
 

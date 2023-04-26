@@ -100,6 +100,10 @@ dependencies {
     implementation 'com.github.florent37:expansionpanel:1.2.4'
 
 
+    //Razorpay Payment Integration
+    implementation 'com.razorpay:checkout:1.6.26'
+
+
 
 
 }
