@@ -3,7 +3,6 @@ package com.donation.heavensgate.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.donation.heavensgate.databinding.SampleDonatorListBinding
 import com.donation.heavensgate.models.Transaction
 import com.donation.heavensgate.models.User
@@ -26,6 +25,7 @@ class OrgDonationAdapter(var translist: List<Transaction>):
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         user = snapshot.getValue(User::class.java)!!
+                        binding.DonLogo.setText(user.userName!!.substring(0,1).toString())
                         binding.DonAmount.text=trans.amount.toString()
                         binding.DonName.text=user.userName
                         binding.DonType.text=trans.type

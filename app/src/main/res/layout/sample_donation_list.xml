@@ -9,11 +9,18 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:expansion_openOnlyOne="true">
+
     <com.github.florent37.expansionpanel.ExpansionHeader
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="32dp"
+
         app:expansion_headerIndicator="@id/headerIndicator"
         app:expansion_layout="@id/expansionLayout"
         app:expansion_toggleOnClick="true">
@@ -87,6 +94,7 @@
         android:id="@+id/expansionLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+
         android:soundEffectsEnabled="true">
 
         <androidx.cardview.widget.CardView
@@ -198,5 +206,6 @@
             <!--            Expand Layout-->
         </androidx.cardview.widget.CardView>
     </com.github.florent37.expansionpanel.ExpansionLayout>
+    </com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout>
 
 </LinearLayout>

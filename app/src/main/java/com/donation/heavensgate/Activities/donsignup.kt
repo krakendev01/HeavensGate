@@ -57,6 +57,9 @@ class donsignup : AppCompatActivity() {
             binding.CnPass.requestFocus()
             binding.CnPass.error="Please Enter a Email"
         }
+        else if (binding.CnPass.text.toString() != binding.toString()){
+            Toast.makeText(this,"Password Does not Match",Toast.LENGTH_SHORT).show()
+        }
         else
         {
             return true

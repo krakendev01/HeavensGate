@@ -1,4 +1,4 @@
-package com.donation.heavensgate
+package com.donation.heavensgate.Activities
 
 import android.app.Activity
 import android.os.Build
@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.donation.heavensgate.R
 import com.donation.heavensgate.databinding.ActivityDonateNowBinding
 import com.donation.heavensgate.models.AddOrgModel
 import com.donation.heavensgate.models.Transaction
@@ -21,7 +22,6 @@ import com.razorpay.Checkout
 import com.razorpay.PayloadHelper
 import com.razorpay.PaymentResultListener
 import org.json.JSONObject
-import java.time.LocalDateTime
 import java.util.*
 
 class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{

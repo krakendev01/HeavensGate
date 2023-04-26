@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.donation.heavensgate.MainActivity
 import com.donation.heavensgate.adapter.AddOrgImageAdapter
 import com.donation.heavensgate.databinding.ActivityFundsignupBinding
 import com.donation.heavensgate.models.AddOrgModel
@@ -125,7 +124,7 @@ class fundsignup : AppCompatActivity() {
             }
         }
         pd = ProgressDialog(this)
-        pd.setTitle("Creating Organization")
+        pd.setTitle("Registering Organization")
     }
 
 
@@ -265,7 +264,7 @@ class fundsignup : AppCompatActivity() {
             .addOnSuccessListener{
             pd.hide()
                 Toast.makeText(this,"Organisation Added Successfully",Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@fundsignup,MainActivity::class.java))
+                startActivity(Intent(this@fundsignup, MainActivity::class.java))
         }
 
             .addOnFailureListener {

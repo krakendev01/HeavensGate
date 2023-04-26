@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="J"
+                android:id="@+id/Don_logo"
                 android:textColor="#494949"
                 android:textColorHighlight="@color/white"
                 android:textAlignment="center"

@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.donation.heavensgate.MainActivity
 import com.donation.heavensgate.databinding.ActivityFundSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -56,7 +55,7 @@ class Fund_SignIn : AppCompatActivity() {
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
                     Toast.makeText(this@Fund_SignIn,"SignIn Success",Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@Fund_SignIn,MainActivity::class.java))
+                    startActivity(Intent(this@Fund_SignIn, MainActivity::class.java))
 
 
                 } else {
@@ -66,6 +65,9 @@ class Fund_SignIn : AppCompatActivity() {
                         Toast.LENGTH_SHORT).show()
 
                 }
+            }
+            .addOnFailureListener{exception->
+                Toast.makeText(this,exception.message, Toast.LENGTH_SHORT).show()
             }
 
     }

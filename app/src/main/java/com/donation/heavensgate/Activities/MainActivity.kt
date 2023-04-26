@@ -1,4 +1,4 @@
-package com.donation.heavensgate
+package com.donation.heavensgate.Activities
 
 import android.os.Bundle
 import android.widget.PopupMenu
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.findNavController
+import com.donation.heavensgate.R
 import com.donation.heavensgate.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

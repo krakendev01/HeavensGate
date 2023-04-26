@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/FundHomeFragment"
-        android:name="com.donation.heavensgate.fund_home"
+        android:name="com.donation.heavensgate.fragment.Fund_home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_fund_home" />
 
     <fragment
         android:id="@+id/FundProfileFragment"
-        android:name="com.donation.heavensgate.fund_profile"
+        android:name="com.donation.heavensgate.fragment.Fund_profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_fund_profile" />
 </navigation>

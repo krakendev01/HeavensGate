@@ -31,7 +31,6 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-
                 app:srcCompat="@drawable/logo" />
 
             <ImageView
@@ -63,18 +62,20 @@
                 android:layout_width="348dp"
                 android:layout_height="51dp"
                 android:layout_gravity="center"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_cus"
                 android:drawableStart="@drawable/email_icon"
                 android:drawablePadding="15dp"
                 android:ems="10"
+                android:inputType="textEmailAddress"
                 android:hint="Enter Your Email"
                 android:paddingLeft="15dp" />
             <EditText
                 android:id="@+id/Pass"
                 android:layout_width="348dp"
                 android:layout_height="51dp"
+                android:singleLine="true"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_cus"

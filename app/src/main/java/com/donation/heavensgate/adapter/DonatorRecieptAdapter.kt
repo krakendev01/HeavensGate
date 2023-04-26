@@ -37,6 +37,7 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
                         binding.amount.text="₹"+myTrans.amount.toString()
                         binding.typ.text=myTrans.type
                         binding.time.text=myTrans.time.toString()
+                        binding.amountEx.text="₹"+myTrans.amount.toString()
 
                     }
 
@@ -52,7 +53,12 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
                     Glide.with(binding.root.context.applicationContext)
                         .load(org.Org_Logo)
                         .into(binding.ologo)
+                    Glide.with(binding.root.context.applicationContext)
+                        .load(org.Org_Logo)
+                        .into(binding.ologoEx)
+
                     binding.onametv.text=org.Org_Name
+                    binding.onametvEx.text=org.Org_Name
 
                 }
 

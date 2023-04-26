@@ -8,7 +8,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.donation.heavensgate.MainActivity
+import com.donation.heavensgate.R
 import com.donation.heavensgate.databinding.ActivitySigninBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -49,7 +49,13 @@ class SignIn : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(binding.root)
 
-    auth = FirebaseAuth.getInstance()
+        binding.imageView.setImageResource(R.drawable.logo)
+        binding.imageView4.setImageResource(R.drawable.loginillu)
+
+
+        auth = FirebaseAuth.getInstance()
+
+
 
     binding.SignIn.setOnClickListener {
         if (validateBasicData())
@@ -65,6 +71,7 @@ class SignIn : AppCompatActivity() {
             binding.progressBarSignin.visibility = GONE
             checkOrg(auth.uid.toString())
         }
+
 
 
     // in future inshallah
@@ -85,8 +92,7 @@ class SignIn : AppCompatActivity() {
                 signIn(binding.phn.text.toString().trim())
             }
         })
-        binding.imageView.setImageResource(R.drawable.logo)
-        binding.imageView4.setImageResource(R.drawable.loginillu)
+
         binding.signup.setOnClickListener(View.OnClickListener {
 
             startActivity(Intent(this@SignIn,Choice::class.java))
@@ -226,10 +232,16 @@ class SignIn : AppCompatActivity() {
             .get()
             .addOnSuccessListener {
                 if (it.exists()){
-                    startActivity(Intent(this,MainActivity::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                 }else
                     startActivity(Intent(this,donatornmain::class.java))
             }
+    }
+
+    override fun onBackPressed() {
+        if (auth == null){
+         finishAffinity()
+        }
     }
 
     private fun donatorSingIn(email: String, password: String) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.fundsignup">
+    tools:context=".Activities.Fund_SignIn">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/BasicCard"
@@ -51,6 +51,7 @@
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:singleLine="true"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_cus"
                 android:hint="Enter Email"

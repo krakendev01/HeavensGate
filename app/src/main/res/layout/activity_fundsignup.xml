@@ -41,6 +41,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
+                android:singleLine="true"
                 android:background="@drawable/edt_cus"
                 android:hint="Organisation Name"
                 android:paddingLeft="15dp">
@@ -55,6 +56,7 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_cus"
                 android:hint="Phone"
+                android:singleLine="true"
                 android:inputType="number"
                 android:paddingLeft="15dp">
 
@@ -64,10 +66,12 @@
                 android:id="@+id/Email"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
+                android:singleLine="true"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_cus"
                 android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:paddingLeft="15dp">
 
             </EditText>
@@ -76,8 +80,10 @@
                 android:id="@+id/Pass"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
+                android:singleLine="true"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
+                android:inputType="textPassword"
                 android:background="@drawable/edt_cus"
                 android:hint="Create Passsword"
                 android:paddingLeft="15dp">
@@ -89,6 +95,8 @@
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:inputType="textPassword"
+                android:singleLine="true"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_cus"
                 android:hint="Confirm Password"
@@ -157,7 +165,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:textSize="20sp"
-                    android:text="TextView" />
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/oemail"
@@ -166,7 +174,7 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginBottom="8dp"
                     android:textSize="20sp"
-                    android:text="TextView" />
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/ophone"
@@ -175,12 +183,13 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginBottom="10dp"
                     android:textSize="20sp"
-                    android:text="TextView" />
+                    android:text="" />
 
                 <EditText
                     android:id="@+id/Principal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:singleLine="true"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
@@ -197,6 +206,7 @@
                     android:id="@+id/Address"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:singleLine="true"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
@@ -211,6 +221,7 @@
                     android:id="@+id/City"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:singleLine="true"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
@@ -226,6 +237,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
+                    android:singleLine="true"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="8dp"
@@ -239,6 +251,7 @@
                     android:id="@+id/Country"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:singleLine="true"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
@@ -252,12 +265,14 @@
                     android:id="@+id/NoStaff"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:singleLine="true"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/edt_cus"
                     android:hint="No. of Staff"
+                    android:inputType="number"
                     android:paddingLeft="15dp">
 
                 </EditText>
@@ -265,10 +280,12 @@
                     android:id="@+id/NoStudent"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:singleLine="true"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="8dp"
+                    android:inputType="number"
                     android:background="@drawable/edt_cus"
                     android:hint="No. of Student"
                     android:paddingLeft="15dp">
@@ -278,7 +295,7 @@
                 <EditText
                     android:id="@+id/Details"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"

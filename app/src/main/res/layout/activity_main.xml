@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
 
 
@@ -13,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:navGraph="@navigation/fund_nav"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        />
+        android:name="androidx.navigation.fragment.NavHostFragment" />
 
     <me.ibrahimsn.lib.SmoothBottomBar
         android:id="@+id/fundbottomBar"
