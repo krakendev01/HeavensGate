@@ -187,6 +187,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:text="Download"
             android:id="@+id/download_btn"
             android:drawableStart="@drawable/baseline_arrow_downward_24">
 
