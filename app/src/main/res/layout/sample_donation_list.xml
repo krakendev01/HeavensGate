@@ -32,8 +32,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/ologo"
                     android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    app:srcCompact="@drawable/addlogo">
+                    android:layout_height="75dp">
                     </de.hdodenhof.circleimageview.CircleImageView>
                <LinearLayout
                    android:layout_width="match_parent"
@@ -103,7 +102,7 @@
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ologo"
+                android:id="@+id/ologoEx"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_margin="20dp"
@@ -112,7 +111,7 @@
             </de.hdodenhof.circleimageview.CircleImageView>
 
             <TextView
-                android:id="@id/onametv"
+                android:id="@+id/onametvEx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="hello"
@@ -166,7 +165,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/amount"
+            android:id="@+id/amountEx"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="23sp"
@@ -181,6 +180,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:id="@+id/download_btn"
             android:drawableStart="@drawable/baseline_arrow_downward_24">
 
         </com.google.android.material.button.MaterialButton>

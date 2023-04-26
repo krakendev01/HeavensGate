@@ -1,13 +1,11 @@
 package com.donation.heavensgate.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.donation.heavensgate.R
+import androidx.fragment.app.Fragment
 import com.donation.heavensgate.databinding.FragmentProfileBinding
-import com.donation.heavensgate.models.FundUsers
 import com.donation.heavensgate.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -43,17 +41,15 @@ class ProfileFragment : Fragment() {
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     user = snapshot.getValue(User::class.java)!!
-                    binding.curProfile.text = user.userName.substring(0,1).toString()
-                    binding.curEmail.text = user.userEmail
-                    binding.curName.text = user.userName
-                    binding.curPhone.text = user.userPhoneNo
+                    binding.curProfile.text = user.userName?.substring(0,1).toString().toUpperCase()
+                    binding.curEmail.text = "Email : " + user.userEmail
+                    binding.curName.text = "Name : "+user.userName
+                    binding.curPhone.text = "Phone No. : " + user.userPhoneNo
                 }
                 override fun onCancelled(error: DatabaseError) {
 
                 }
             })
-
-        val curUid = auth.uid.toString()
 
         return binding.root
     }

@@ -6,7 +6,7 @@
     app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/FundHomeFragment"
+        android:id="@+id/HomeFragment"
         android:name="com.donation.heavensgate.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_fund_home" />

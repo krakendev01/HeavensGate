@@ -29,13 +29,7 @@ class donsignup : AppCompatActivity() {
             if (validateBasicData()) {
 
                 EmailSignup(binding.UserEmail.text.toString(), binding.Pass.text.toString())
-                user= User(binding.UserPhone.text.toString(),binding.UserEmail.text.toString(),binding.UserName.text.toString(),"Don")
-                database.getReference("users")
-                    .child("donators")
-                    .child(auth.uid.toString())
-                    .setValue(user).addOnSuccessListener {
-                        startActivity(Intent(this,donatornmain::class.java))
-                    }
+
             }
 
 
@@ -78,7 +72,13 @@ class donsignup : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
-                    val user = auth.currentUser
+                    user= User(binding.UserPhone.text.toString(),binding.UserEmail.text.toString(),binding.UserName.text.toString(),"Don")
+                    database.getReference("users")
+                        .child("donators")
+                        .child(task.result.user!!.uid.toString())
+                        .setValue(user).addOnSuccessListener {
+                            startActivity(Intent(this,donatornmain::class.java))
+                        }
 
                 } else {
                     // If sign in fails, display a message to the user.
