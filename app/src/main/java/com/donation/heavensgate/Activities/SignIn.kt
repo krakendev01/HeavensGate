@@ -1,15 +1,21 @@
 package com.donation.heavensgate.Activities
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.donation.heavensgate.MainActivity
 import com.donation.heavensgate.databinding.ActivitySigninBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignIn : AppCompatActivity() {
     lateinit var binding:ActivitySigninBinding
@@ -19,12 +25,50 @@ class SignIn : AppCompatActivity() {
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     private lateinit var storedVerificationId: String*/
+
+    private fun validateBasicData() :Boolean{
+        if (binding.Email.text.toString().isEmpty()){
+            binding.Email.requestFocus()
+            binding.Email.error="Please Enter a Name"
+        }
+
+        else if (binding.Pass.text.toString().isEmpty()){
+            binding.Pass.requestFocus()
+            binding.Pass.error="Please Enter a Email"
+        }
+
+        else
+        {
+            return true
+        }
+        return false
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
     binding = ActivitySigninBinding.inflate(layoutInflater)
     super.onCreate(savedInstanceState)
     setContentView(binding.root)
 
     auth = FirebaseAuth.getInstance()
+
+    binding.SignIn.setOnClickListener {
+        if (validateBasicData())
+        {
+            donatorSingIn(binding.Email.text.toString(),binding.Pass.text.toString())
+        }
+    }
+        if (auth.currentUser!=null){
+            Log.d("uid",auth.currentUser!!.uid.toString())
+            binding.materialCardView.visibility = VISIBLE
+            binding.textView.visibility = VISIBLE
+            binding.signup.visibility = VISIBLE
+            binding.progressBarSignin.visibility = GONE
+            checkOrg(auth.uid.toString())
+        }
+
+
+    // in future inshallah
+
     /*auth.firebaseAuthSettings.forceRecaptchaFlowForTesting(false)
         ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.INTERNET),10)
         binding.BtnOrgSignin.setOnClickListener {
@@ -163,7 +207,49 @@ class SignIn : AppCompatActivity() {
                 }
             }*/
 
+    binding.signup.setOnClickListener {
+        startActivity(Intent(this,Choice::class.java))
+    }
+        binding.BtnOrgSignin.setOnClickListener {
+            startActivity(Intent(this,Fund_SignIn::class.java))
+        }
 }
+
+    private fun checkOrg(uid: String){
+        binding.materialCardView.visibility = GONE
+        binding.textView.visibility = GONE
+        binding.signup.visibility = GONE
+        binding.progressBarSignin.visibility = VISIBLE
+        val db = FirebaseFirestore.getInstance()
+        db.collection("Organisations")
+            .document(uid)
+            .get()
+            .addOnSuccessListener {
+                if (it.exists()){
+                    startActivity(Intent(this,MainActivity::class.java))
+                }else
+                    startActivity(Intent(this,donatornmain::class.java))
+            }
+    }
+
+    private fun donatorSingIn(email: String, password: String) {
+
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithEmail:success")
+                    val user = auth.currentUser
+                    startActivity(Intent(this,donatornmain::class.java))
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
     private fun checkuserExist(number: String) {
         FirebaseDatabase.getInstance().getReference("users").child("+91$number")
             .addValueEventListener(object : ValueEventListener {
@@ -183,6 +269,4 @@ class SignIn : AppCompatActivity() {
             })
 
     }
-
-
 }
