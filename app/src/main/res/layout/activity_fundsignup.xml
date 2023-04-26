@@ -325,6 +325,7 @@
                         android:id="@+id/Org_Images"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
+                        android:visibility="gone"
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/images_item">
@@ -333,6 +334,7 @@
 
                     <Button
                         android:id="@+id/BtnUpload"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
