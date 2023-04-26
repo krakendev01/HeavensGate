@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_SMS"/>
+
 
     <application
         android:allowBackup="true"
@@ -16,13 +18,27 @@
         tools:targetApi="31">
         <activity
             android:name=".DonateNowActivity"
-            android:exported="false" />
+            android:exported="true">
+        </activity>
+        <receiver android:name="com.razorpay.RzpTokenReceiver"
+        android:exported="true"
+        tools:replace="android:exported">
+        <intent-filter>
+            <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />
+        </intent-filter>
+    </receiver>
+        <meta-data
+        android:name="com.razorpay.ApiKey"
+        android:value="rzp_test_5FCHZjoDEbaqUW"/>
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
         <activity
             android:name=".Activities.Fund_SignIn"
             android:exported="false" />
         <activity
             android:name=".Activities.donatornmain"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.Choice"
             android:exported="false" />
@@ -46,7 +62,7 @@
         </activity>
         <activity
             android:name=".spalsh"
-            android:exported="true"></activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />

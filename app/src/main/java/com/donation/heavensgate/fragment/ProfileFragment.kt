@@ -1,18 +1,16 @@
 package com.donation.heavensgate.fragment
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.*
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.donation.heavensgate.Activities.SignIn
-import com.donation.heavensgate.R
 import com.donation.heavensgate.databinding.FragmentProfileBinding
-import com.donation.heavensgate.models.FundUsers
 import com.donation.heavensgate.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -48,7 +46,7 @@ class ProfileFragment : Fragment() {
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     user = snapshot.getValue(User::class.java)!!
-                    binding.curProfile.text = user.userName.substring(0,1).toString()
+                    binding.curProfile.text = user.userName!!.substring(0,1).toString()
                     binding.curEmail.text = user.userEmail
                     binding.curName.text = user.userName
                     binding.curPhone.text = user.userPhoneNo
@@ -74,7 +72,7 @@ class ProfileFragment : Fragment() {
                 .addValueEventListener(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         user = snapshot.getValue(User::class.java)!!
-                        binding.ETProfile.setText(user.userName.substring(0,1).toString())
+                        binding.ETProfile.setText(user.userName!!.substring(0,1).toString())
                         binding.ETEmail.setText(user.userEmail)
                         binding.ETName.setText(user.userName)
                         binding.ETPhone.setText(user.userPhoneNo)
