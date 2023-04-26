@@ -12,7 +12,9 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/sample_donator_list"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical">
+        android:orientation="vertical"
+
+        >
     </androidx.recyclerview.widget.RecyclerView>
 
 

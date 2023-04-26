@@ -17,7 +17,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:cardCornerRadius="100dp">
-            <TextView
+                <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/cur_profile"
@@ -26,7 +26,6 @@
                 android:textColorHighlight="@color/white"
                 android:textAlignment="center"
                 android:autoSizeTextType="uniform"
-                android:background="@drawable/edt_cus"
                 android:textSize="40sp"/>
         </androidx.cardview.widget.CardView>
 
