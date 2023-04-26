@@ -94,7 +94,6 @@ class fundsignup : AppCompatActivity() {
             val intent=Intent("android.intent.action.GET_CONTENT")
             intent.type="image/*"
             launchLogoImageActivity.launch(intent)
-            uploadLogoImage()
         }
 
 
@@ -151,12 +150,12 @@ class fundsignup : AppCompatActivity() {
             binding.OrgName.error="Please Enter a Country"
         }else if(latterImage==null){
             Toast.makeText(this@fundsignup,"please upload Latter of Assuarance",Toast.LENGTH_SHORT).show()
-        }else if(list.size<1){
-            Toast.makeText(this@fundsignup,"please upload organisation Images",Toast.LENGTH_SHORT).show()
         }
+//        else if(list.size<1){
+//            Toast.makeText(this@fundsignup,"please upload organisation Images",Toast.LENGTH_SHORT).show()
+//        }
         else{
             pd.show()
-
             uploadImage()
         }
     }
@@ -169,7 +168,6 @@ class fundsignup : AppCompatActivity() {
             .addOnSuccessListener {
                 it.storage.downloadUrl.addOnSuccessListener{ image ->
                     latterImageUri=image.toString()
-                    Toast.makeText(this,latterImageUri,Toast.LENGTH_SHORT).show()
                     uploadLogoImage()
                 }
             }
@@ -185,8 +183,9 @@ class fundsignup : AppCompatActivity() {
             .addOnSuccessListener {
                 it.storage.downloadUrl.addOnSuccessListener{ image ->
                     logoUri=image.toString()
+                    uploadOrgImage()
                 }
-                uploadOrgImage()
+
             }
             .addOnFailureListener{
                 Toast.makeText(this@fundsignup,"error in upload logo image",Toast.LENGTH_SHORT).show()
@@ -210,10 +209,27 @@ class fundsignup : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-
-
+//                    list.forEachIndexed(){index,it ->
+//                        listImages.add(uploadImageNew(it).result.toString())
+//                        if(index == list.size){
+//                            storeData(task.result.user!!.uid.toString())
+//                        }
+////                        val refStorage=FirebaseStorage.getInstance().reference.child(LocalDateTime.now().toString())
+////                        refStorage.putFile(it)
+////                            .addOnSuccessListener {it1 ->
+////                                it1.storage.downloadUrl.addOnSuccessListener{image ->
+////                                    listImages.add(image!!.toString())
+////                                    Toast.makeText(this@fundsignup,listImages.toString(),Toast.LENGTH_SHORT).show()
+////                                    Log.d("key",listImages.toString())
+////
+////                                }
+////                            }
+////                            .addOnFailureListener{
+////                                Toast.makeText(this@fundsignup,"error in upload org image",Toast.LENGTH_SHORT).show()
+////                            }
+//                    }
+                    storeData(task.result.user!!.uid.toString())
                     Log.d(ContentValues.TAG, "signInAnonymously:success")
-
 
                 } else {
                     // If sign in fails, display a message to the user.
@@ -242,7 +258,7 @@ class fundsignup : AppCompatActivity() {
             Integer.parseInt(binding.NoStaff.text.toString()),
             Integer.parseInt(binding.NoStudent.text.toString()),
             logoUri.toString(),
-            listImages,
+            ArrayList<String>(),
         )
         db.document(key).set(data)
             .addOnSuccessListener{

@@ -4,8 +4,11 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.donation.heavensgate.MainActivity
 import com.donation.heavensgate.databinding.ActivitySigninBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -56,11 +59,11 @@ class SignIn : AppCompatActivity() {
     }
         if (auth.currentUser!=null){
             Log.d("uid",auth.currentUser!!.uid.toString())
-            if(checkOrg(auth.currentUser!!.uid.toString())){
-                startActivity(Intent(this,Choice::class.java))
-            }else{
-                startActivity(Intent(this,donatornmain::class.java))
-            }
+            binding.materialCardView.visibility = VISIBLE
+            binding.textView.visibility = VISIBLE
+            binding.signup.visibility = VISIBLE
+            binding.progressBarSignin.visibility = GONE
+            checkOrg(auth.uid.toString())
         }
 
 
@@ -212,18 +215,21 @@ class SignIn : AppCompatActivity() {
         }
 }
 
-    private fun checkOrg(uid: String) : Boolean{
+    private fun checkOrg(uid: String){
+        binding.materialCardView.visibility = GONE
+        binding.textView.visibility = GONE
+        binding.signup.visibility = GONE
+        binding.progressBarSignin.visibility = VISIBLE
         val db = FirebaseFirestore.getInstance()
-        var flag = false
         db.collection("Organisations")
-            .whereEqualTo("uid",uid)
+            .document(uid)
             .get()
             .addOnSuccessListener {
-                if (!it.isEmpty){
-                    flag = true
-                }
+                if (it.exists()){
+                    startActivity(Intent(this,MainActivity::class.java))
+                }else
+                    startActivity(Intent(this,donatornmain::class.java))
             }
-        return flag
     }
 
     private fun donatorSingIn(email: String, password: String) {
