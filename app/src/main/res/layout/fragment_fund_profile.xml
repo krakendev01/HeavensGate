@@ -90,7 +90,17 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/fund_pro_update_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Update"
+            android:layout_height="wrap_content"
+
+            />
+            <com.google.android.material.button.MaterialButton
+            android:id="@+id/fund_pro_Logout_btn"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Update"
             android:layout_height="wrap_content"
 
             />

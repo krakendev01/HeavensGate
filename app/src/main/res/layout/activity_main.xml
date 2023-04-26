@@ -17,7 +17,7 @@
         />
 
     <me.ibrahimsn.lib.SmoothBottomBar
-        android:id="@+id/bottomBar"
+        android:id="@+id/fundbottomBar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         app:iconSize="20dp"
