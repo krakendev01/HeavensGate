@@ -11,7 +11,7 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/SearchFragment"
+        android:id="@+id/DonationFragment"
         android:name="com.donation.heavensgate.fragment.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_profile" />

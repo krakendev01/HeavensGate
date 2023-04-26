@@ -30,7 +30,7 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
 
             database.reference.child("users")
                 .child("donators")
-                .child(auth.uid.toString())
+                .child(myTrans.donator)
                 .addValueEventListener(object :ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         don= snapshot.getValue(User::class.java)!!
