@@ -37,6 +37,24 @@
             android:layout_height="wrap_content"
             android:id="@+id/cur_phone"
             android:layout_marginVertical="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log Out">
+
+            </com.google.android.material.button.MaterialButton>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update">
+
+            </com.google.android.material.button.MaterialButton>
+
+        </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>
