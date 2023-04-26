@@ -13,8 +13,24 @@ class DonatorMainOrgDisplayAdapter(var orgList: List<AddOrgModel>) :
     RecyclerView.Adapter<DonatorMainOrgDisplayAdapter.DonatorMainOrgDisplayViewHolder>() {
 
 
-    inner class DonatorMainOrgDisplayViewHolder(val binding: OrglistLayoutBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    class DonatorMainOrgDisplayViewHolder(val binding: OrglistLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root){
+        fun setData(org : AddOrgModel){
+            Glide.with(binding.root.context.applicationContext)
+                .load(org.Org_Logo)
+                .into(binding.orgLogoIv)
+            binding.orgNameTv.text = org.Org_Name
+            binding.orgPrincipalNameTv.text = org.Org_Principal
+            binding.orgNoOfStudentTv.text = org.Org_NoStudent.toString()
+            binding.orgDonateNowBtn.setOnClickListener {
+                //Handle on Click
+                val intent = Intent(binding.root.context,DonateNowActivity::class.java)
+                intent.putExtra("uid",org.Org_Id)
+                binding.root.context.startActivity(intent)
+            }
+
+        }
+        }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -23,6 +39,7 @@ class DonatorMainOrgDisplayAdapter(var orgList: List<AddOrgModel>) :
         val binding =
             OrglistLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DonatorMainOrgDisplayViewHolder(binding)
+
     }
 
     override fun getItemCount(): Int {
@@ -31,18 +48,8 @@ class DonatorMainOrgDisplayAdapter(var orgList: List<AddOrgModel>) :
 
     override fun onBindViewHolder(holder: DonatorMainOrgDisplayViewHolder, position: Int) {
         val org = orgList[position]
-        Glide.with(holder.binding.root.context.applicationContext)
-            .load(org.Org_Logo)
-            .into(holder.binding.orgLogoIv)
-        holder.binding.orgNameTv.text = org.Org_Name
-        holder.binding.orgPrincipalNameTv.text = org.Org_Principal
-        holder.binding.orgNoOfStudentTv.text = org.Org_NoStudent.toString()
-        holder.binding.orgDonateNowBtn.setOnClickListener {
-            //Handle on Click
-            val intent = Intent(holder.binding.root.context,DonateNowActivity::class.java)
-            intent.putExtra("uid",org.Org_Id)
-            holder.binding.root.context.startActivity(intent)
-        }
+        holder.setData(org)
+
 
     }
 }
