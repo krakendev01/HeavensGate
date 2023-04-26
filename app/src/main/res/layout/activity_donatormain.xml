@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Activities.donatornmain">
 
-
-
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frafmentcontainer"
         android:layout_width="match_parent"

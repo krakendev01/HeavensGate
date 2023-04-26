@@ -6,7 +6,7 @@
         android:icon="@drawable/home"/>
 
     <item android:id="@+id/SearchFragment"
-        android:title="Explore"
+        android:title="Donations"
         android:icon="@drawable/direction"/>
 
     <item android:id="@+id/ProfileFragment"
