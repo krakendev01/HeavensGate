@@ -6,9 +6,9 @@ data class Transaction(
     var transId:String,
     var donator : String,
     var fundraiser : String,
-    var time : LocalDateTime?,
+    var time : Long,
     var amount : Double,
     var type : String
 ){
-    constructor() : this("","","",null,0.0,"")
+    constructor() : this("","","",0,0.0,"")
 }

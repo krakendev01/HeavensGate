@@ -28,21 +28,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class fund_home : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
     private lateinit var binding:FragmentFundHomeBinding
     lateinit var auth : FirebaseAuth
     lateinit var db : FirebaseFirestore
     lateinit var database : FirebaseDatabase
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,13 +44,13 @@ class fund_home : Fragment() {
         database = FirebaseDatabase.getInstance()
 
 
-        db.collection("transactions")
+        db.collection("trans")
             .get()
             .addOnSuccessListener { value ->
                 var transList = ArrayList<Transaction>()
-                for (i in value) {
-                    var trans: Transaction? = i.toObject(Transaction::class.java)
-                    transList.add(i.toObject<Transaction>())
+                value.forEach {
+                    val trans: Transaction? = it.toObject(Transaction::class.java)
+                    transList.add(trans!!)
                 }
                 Log.d("ORG LIST", transList.toString())
                 Log.d("value",value.toString())
@@ -72,25 +62,5 @@ class fund_home : Fragment() {
 
         // Inflate the layout for this fragment
         return binding.root
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fund_home.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fund_home().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

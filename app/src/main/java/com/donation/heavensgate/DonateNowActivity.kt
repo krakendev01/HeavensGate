@@ -103,7 +103,7 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
                 val co = Checkout()
                 // apart from setting it in AndroidManifest.xml, keyId can also be set
                 // programmatically during runtime
-                oId = Integer.toHexString(Random().nextInt(12))
+                oId = Integer.toHexString(Random().nextInt(99999999))
                 co.setKeyID("rzp_test_5FCHZjoDEbaqUW")
                 val payloadHelper = PayloadHelper("INR", Math.round(binding.donAmountSb.text.toString().toFloat() * 100).toInt(),oId )
                 payloadHelper.name = R.string.app_name.toString()
@@ -209,7 +209,7 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             db.collection("trans")
                 .document(oId)
-                .set(Transaction(oId,auth.uid.toString(),org.Org_Id!!, LocalDateTime.now(),binding.donAmountSb.text.toString().toDouble(),type))
+                .set(Transaction(oId,auth.uid.toString(),org.Org_Id!!, Date().time,binding.donAmountSb.text.toString().toDouble(),type))
         }
     }
     override fun onPaymentError(p0: Int, p1: String?) {
