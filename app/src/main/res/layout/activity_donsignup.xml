@@ -26,13 +26,13 @@
             android:layout_marginTop="16dp"
 
             app:srcCompat="@drawable/logo" />
+
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="322dp"
             android:layout_height="259dp"
-            android:layout_marginTop="76dp"
             android:layout_gravity="center"
-
+            android:layout_marginTop="15dp"
 
 
             tools:srcCompat="@drawable/signuppic" />
@@ -42,7 +42,7 @@
             android:layout_width="348dp"
             android:layout_height="51dp"
             android:layout_gravity="center"
-
+            android:layout_marginVertical="5dp"
             android:background="@drawable/edt_cus"
             android:ems="10"
             android:gravity="center_vertical"
@@ -58,9 +58,11 @@
             android:layout_height="51dp"
             android:background="@drawable/edt_cus"
             android:ems="10"
+            android:layout_marginVertical="5dp"
             android:gravity="center_vertical"
             android:hint="Phone number"
             android:inputType="phone"
+            android:paddingLeft="15dp"
             android:textSize="20sp"
             />
 
@@ -69,37 +71,43 @@
             android:id="@+id/UserEmail"
             android:layout_width="348dp"
             android:layout_height="51dp"
-
+            android:layout_marginVertical="5dp"
             android:background="@drawable/edt_cus"
             android:ems="10"
             android:layout_gravity="center"
-
             android:gravity="center_vertical"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:paddingLeft="15dp"
             android:textSize="20sp"
             />
+
         <EditText
             android:id="@+id/Pass"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_width="348dp"
+            android:layout_height="51dp"
             android:layout_gravity="center"
+            android:layout_marginVertical="5dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/edt_cus"
+            android:fontFamily="sans-serif"
             android:hint="Create Passsword"
-            android:paddingLeft="15dp">
+            android:paddingLeft="15dp"
+            android:textSize="20sp">
 
         </EditText>
+
         <EditText
             android:id="@+id/CnPass"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_width="348dp"
+            android:layout_height="51dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
+            android:layout_marginVertical="5dp"
             android:background="@drawable/edt_cus"
             android:hint="Confirm Password"
-            android:paddingLeft="15dp">
+            android:paddingLeft="15dp"
+            android:textSize="20sp">
 
         </EditText>
 
@@ -112,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
+            android:layout_marginVertical="15dp"
             android:background="@drawable/btn_cus"
             android:text="get otp"
             android:textStyle="bold" />

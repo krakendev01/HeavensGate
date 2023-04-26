@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.donation.heavensgate.adapter.DonatorRecieptAdapter
 import com.donation.heavensgate.databinding.FragmentSearchBinding
 import com.donation.heavensgate.models.Transaction
 import com.google.firebase.auth.FirebaseAuth
@@ -26,20 +27,21 @@ class SearchFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         database = FirebaseDatabase.getInstance()
+        transList = ArrayList()
 
         db.collection("trans")
-
             .whereEqualTo("donator",auth.uid.toString())
             .get()
             .addOnSuccessListener {
                 if (it.isEmpty)
                     return@addOnSuccessListener
                 else{
-                    it.documents.forEach {
-                    val trans = it.toObject(Transaction::class.java)!!
+                    it.documents.forEach {it1->
+                        val trans = it1.toObject(Transaction::class.java)!!
                         transList.add(trans)
+
                     }
-                    //binding.transListRv.adapter = DonatorRecieptAdapter(transList)
+                    binding.transListRv.adapter = DonatorRecieptAdapter(transList)
                 }
             }
 

@@ -118,6 +118,7 @@ class fundsignup : AppCompatActivity() {
             binding.oname.text = binding.OrgName.text.toString()
             binding.ophone.text = binding.Phone.text.toString()
             binding.oemail.text = binding.Email.text.toString()
+            binding.BtnVerify.visibility= VISIBLE
             if (validateBasicData()) {
                 binding.BasicCard.visibility = INVISIBLE
                 binding.DetailedCard.visibility = VISIBLE

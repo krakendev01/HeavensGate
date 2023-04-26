@@ -34,15 +34,21 @@
             android:layout_height="wrap_content"
             android:id="@+id/org_name_dn"
             android:text="Org Name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#0E0E0E"
             android:layout_marginStart="5dp"/>
     </LinearLayout>
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="View Tasdeek Dama"
+                android:text="View Tasdeek Nama"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
                 android:id="@+id/tasdeek_nama_btn"
-                app:cornerRadius="15dp"/>
+                app:cornerRadius="30dp"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,30 +58,53 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:textSize="15.5sp"
                 android:text="Principal Name"
                 android:id="@+id/org_principal_name_dn"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
                 android:text="No. of Staff"
                 android:id="@+id/org_staff_no_dn"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
                 android:text="No. of Student"
                 android:id="@+id/org_student_no_dn"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
                 android:text="Address"
                 android:id="@+id/org_address_dn"/>
-            <com.google.android.material.button.MaterialButton
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:text="Description"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Description"
+                android:id="@+id/org_description"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
                 android:text="Donate Now"
                 android:id="@+id/org_donate_now_btn_dn"
                 android:layout_margin="10dp"
-                app:cornerRadius="15dp"/>
+                app:cornerRadius="30dp"/>
         </LinearLayout>
 <!--        Add Images of Organisations-->
         </ScrollView>
