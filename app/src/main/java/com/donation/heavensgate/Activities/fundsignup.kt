@@ -18,12 +18,14 @@ import com.donation.heavensgate.MainActivity
 import com.donation.heavensgate.adapter.AddOrgImageAdapter
 import com.donation.heavensgate.databinding.ActivityFundsignupBinding
 import com.donation.heavensgate.models.AddOrgModel
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.time.LocalDateTime
 import java.util.*
 
 class fundsignup : AppCompatActivity() {
@@ -92,6 +94,7 @@ class fundsignup : AppCompatActivity() {
             val intent=Intent("android.intent.action.GET_CONTENT")
             intent.type="image/*"
             launchLogoImageActivity.launch(intent)
+            uploadLogoImage()
         }
 
 
@@ -153,12 +156,12 @@ class fundsignup : AppCompatActivity() {
         }
         else{
             pd.show()
-            uploadLogoImage()
+
             uploadImage()
-            uploadOrgImage()
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun uploadImage() {
         val filename=UUID.randomUUID().toString()+".jpg"
         val refStorage=FirebaseStorage.getInstance().reference.child("Latter $filename")
@@ -167,12 +170,14 @@ class fundsignup : AppCompatActivity() {
                 it.storage.downloadUrl.addOnSuccessListener{ image ->
                     latterImageUri=image.toString()
                     Toast.makeText(this,latterImageUri,Toast.LENGTH_SHORT).show()
+                    uploadLogoImage()
                 }
             }
             .addOnFailureListener{
                 Toast.makeText(this@fundsignup,"error in upload latter image",Toast.LENGTH_SHORT).show()
             }
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun uploadLogoImage() {
         val filename=UUID.randomUUID().toString()+".jpg"
         val refStorage=FirebaseStorage.getInstance().reference.child("Logo $filename")
@@ -181,32 +186,35 @@ class fundsignup : AppCompatActivity() {
                 it.storage.downloadUrl.addOnSuccessListener{ image ->
                     logoUri=image.toString()
                 }
+                uploadOrgImage()
             }
             .addOnFailureListener{
                 Toast.makeText(this@fundsignup,"error in upload logo image",Toast.LENGTH_SHORT).show()
             }
     }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun uploadImageNew(file: Uri): Task<Uri> {
+        val storageRef=FirebaseStorage.getInstance().reference
+        val imageRef = storageRef.child("images/${LocalDateTime.now()}")
+        return imageRef.putFile(file).continueWithTask { task ->
+            if (!task.isSuccessful) {
+                task.exception?.let { throw it }
+            }
+            imageRef.downloadUrl
+        }
+    }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun uploadOrgImage() {
         auth.createUserWithEmailAndPassword(binding.Email.text.toString().trim(),binding.Pass.text.toString().trim())
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
 
-                    list.forEach{
-                        val refStorage=FirebaseStorage.getInstance().reference.child("org/Organisations $it")
-                        refStorage.putFile(it)
-                            .addOnSuccessListener {it1 ->
-                                it1.storage.downloadUrl.addOnSuccessListener{image ->
-                                    listImages.add(image!!.toString())
-                                }
-                            }
-                            .addOnFailureListener{
-                                Toast.makeText(this@fundsignup,"error in upload org image",Toast.LENGTH_SHORT).show()
-                            }
-                    }
-                    storeData()
+
                     Log.d(ContentValues.TAG, "signInAnonymously:success")
+
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(ContentValues.TAG, "signInAnonymously:failure", task.exception)
@@ -215,10 +223,10 @@ class fundsignup : AppCompatActivity() {
                 }
             }
     }
-    private fun storeData() {
+    private fun storeData(key: String) {
         val db= Firebase.firestore.collection("Organisations")
         val data= AddOrgModel(
-            auth.uid.toString(),
+            key,
             binding.OrgName.text.toString(),
             binding.Email.text.toString(),
             binding.Pass.text.toString(),
@@ -236,7 +244,7 @@ class fundsignup : AppCompatActivity() {
             logoUri.toString(),
             listImages,
         )
-        db.document(auth.uid.toString()).set(data)
+        db.document(key).set(data)
             .addOnSuccessListener{
             pd.hide()
                 Toast.makeText(this,"Organisation Added Successfully",Toast.LENGTH_SHORT).show()
