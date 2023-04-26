@@ -62,6 +62,7 @@
                 android:layout_width="348dp"
                 android:layout_height="51dp"
                 android:layout_gravity="center"
+                android:maxLines="1"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_cus"
                 android:drawableStart="@drawable/email_icon"

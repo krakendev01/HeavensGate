@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="3dp"
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="8dp"
             >
             <!--            normal layout-->
             <LinearLayout
@@ -32,8 +32,10 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/ologo"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp">
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    >
                     </de.hdodenhof.circleimageview.CircleImageView>
                <LinearLayout
                    android:layout_width="match_parent"
@@ -46,6 +48,7 @@
                        android:layout_height="wrap_content"
                        android:layout_margin="5dp"
                        android:text="hello"
+                       android:textColor="@color/black"
                        android:textSize="18sp"
                        android:textStyle="bold">
                    </TextView>
@@ -56,6 +59,7 @@
                        android:layout_height="wrap_content"
                        android:layout_margin="5dp"
                         android:text="hello"
+                       android:textColor="#2AC300"
                        android:textSize="18sp"
                        android:textStyle="bold">
                    </TextView>
@@ -90,6 +94,7 @@
             android:layout_height="match_parent"
             android:layout_margin="3dp"
             android:padding="3dp"
+            app:cardElevation="5dp"
             app:cardCornerRadius="15dp">
     <LinearLayout
         android:layout_width="match_parent"
@@ -104,8 +109,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ologoEx"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_margin="20dp"
                 tools:ignore="DuplicateIds">
 
@@ -133,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
-                android:text="Type"
+                android:text="Type :"
                 android:textSize="18sp"></TextView>
 
             <TextView
@@ -154,7 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
-                android:text="Time"
+                android:text="Time :"
                 android:textSize="18sp"></TextView>
 
             <TextView
@@ -170,9 +175,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="23sp"
+            android:textColor="#2AC300"
             android:textStyle="bold"
-            tools:ignore="DuplicateIds"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center">
         </TextView>
 
 

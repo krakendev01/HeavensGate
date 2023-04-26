@@ -35,15 +35,19 @@
             android:background="@drawable/edt_cus"
             android:text="John Doe"
             android:textAlignment="center"
+            android:gravity="center"
             android:id="@+id/cur_name"
-            android:textSize="30dp"
+            android:textSize="25sp"
+            android:textStyle="bold"
             android:layout_marginVertical="5dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/edt_cus"
             android:text="john@gmail.com"
-            android:textSize="30dp"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:gravity="center"
             android:textAlignment="center"
             android:id="@+id/cur_email"
             android:layout_marginVertical="5dp"/>
@@ -52,7 +56,9 @@
             android:layout_height="50dp"
             android:background="@drawable/edt_cus"
             android:text="998877664455"
-            android:textSize="30dp"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:id="@+id/cur_phone"
             android:layout_marginVertical="5dp"/>
@@ -103,7 +109,6 @@
                 android:textColorHighlight="@color/white"
                 android:textAlignment="center"
                 android:autoSizeTextType="uniform"
-                android:background="@drawable/edt_cus"
                 android:textSize="40sp"/>
         </androidx.cardview.widget.CardView>
 
@@ -114,16 +119,21 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edt_cus"
-            android:hint="Email">
+            android:outlineAmbientShadowColor="@color/colorPrimary"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            android:hint="User Name">
 
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ETEmail"
+                android:id="@+id/ETName"
 
                 android:editable="false"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -131,11 +141,15 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edt_cus"
-            android:hint="Name">
+            android:outlineAmbientShadowColor="@color/colorPrimary"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            android:hint="Email">
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ETName"
+                android:id="@+id/ETEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -148,7 +162,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edt_cus"
+            android:outlineAmbientShadowColor="@color/colorPrimary"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
             android:hint="Phone">
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
