@@ -2,22 +2,18 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav"
-    app:startDestination="@id/HomeFragment">
+    android:id="@+id/nav_fund"
+    app:startDestination="@id/FundHomeFragment">
 
     <fragment
-        android:id="@+id/HomeFragment"
-        android:name="com.donation.heavensgate.fragment.HomeFragment"
+        android:id="@+id/FundHomeFragment"
+        android:name="com.donation.heavensgate.fund_home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_fund_home" />
+
     <fragment
-        android:id="@+id/SearchFragment"
-        android:name="com.donation.heavensgate.fragment.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
-    <fragment
-        android:id="@+id/ProfileFragment"
-        android:name="com.donation.heavensgate.fragment.ProfileFragment"
+        android:id="@+id/FundProfileFragment"
+        android:name="com.donation.heavensgate.fund_profile"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_fund_profile" />
 </navigation>

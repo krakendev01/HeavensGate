@@ -11,4 +11,9 @@
     <array name="district">
         <item>Bharuch</item>
     </array>
+    <array name="donateType">
+        <item>Lillallah</item>
+        <item>Sadkah</item>
+        <item>Zakat</item>
+    </array>
 </resources>
