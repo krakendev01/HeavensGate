@@ -96,5 +96,10 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 
+    //ExpansionPanel
+    implementation 'com.github.florent37:expansionpanel:1.2.4'
+
+
+
 
 }

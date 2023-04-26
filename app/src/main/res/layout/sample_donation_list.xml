@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/collection"
+    android:layout_width='match_parent'
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.github.florent37.expansionpanel.ExpansionHeader
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="32dp"
+        app:expansion_headerIndicator="@id/headerIndicator"
+        app:expansion_layout="@id/expansionLayout"
+        app:expansion_toggleOnClick="true">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/header_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            app:cardCornerRadius="15dp">
+            <!--            normal layout-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ologo"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:srcCompact="@drawable/addlogo">
+                    </de.hdodenhof.circleimageview.CircleImageView>
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:orientation="vertical">
+
+                   <TextView
+                       android:id="@+id/onametv"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       android:text="hello"
+                       android:textSize="18sp"
+                       android:textStyle="bold">
+                   </TextView>
+
+                   <TextView
+                       android:id="@+id/amount"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                        android:text="hello"
+                       android:textSize="18sp"
+                       android:textStyle="bold">
+                   </TextView>
+
+               </LinearLayout>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <!-- HEADER -->
+        <!-- HEADER INDICATOR -->
+
+        <ImageView
+            android:id="@+id/headerIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginLeft="16dp"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+    </com.github.florent37.expansionpanel.ExpansionHeader>
+
+    <com.github.florent37.expansionpanel.ExpansionLayout
+        android:id="@+id/expansionLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:soundEffectsEnabled="true">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="352dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:padding="3dp"
+            app:cardCornerRadius="15dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ologo"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_margin="20dp"
+                tools:ignore="DuplicateIds">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
+
+            <TextView
+                android:id="@id/onametv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hello"
+                android:textSize="22sp"
+                android:textStyle="bold"></TextView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:text="Type"
+                android:textSize="18sp"></TextView>
+
+            <TextView
+                android:id="@+id/typ"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:text="Time"
+                android:textSize="18sp"></TextView>
+
+            <TextView
+               android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            tools:ignore="DuplicateIds"
+            android:layout_marginBottom="20dp">
+        </TextView>
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/baseline_arrow_downward_24">
+
+        </com.google.android.material.button.MaterialButton>
+                </LinearLayout>
+
+
+            <!--            Expand Layout-->
+        </androidx.cardview.widget.CardView>
+    </com.github.florent37.expansionpanel.ExpansionLayout>
+
+</LinearLayout>

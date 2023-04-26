@@ -50,19 +50,17 @@
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
             android:textSize="20sp" />
+
         <EditText
             android:id="@+id/UserPhone"
             android:layout_gravity="center"
-
             android:layout_width="348dp"
             android:layout_height="51dp"
-
             android:background="@drawable/edt_cus"
             android:ems="10"
             android:gravity="center_vertical"
             android:hint="Phone number"
             android:inputType="phone"
-
             android:textSize="20sp"
             />
 
