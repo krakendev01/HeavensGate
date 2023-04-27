@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -83,7 +84,6 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
                     }
                     binding.orgPrincipalNameDn.text = "Principal Name : " + org.Org_Principal
                     binding.orgNameDn.text = org.Org_Name
-                    binding.orgDescription.text=org.Org_Description
                     binding.orgStaffNoDn.text = "No. of Staff : "+org.Org_NoStaff.toString()
                     binding.orgStudentNoDn.text = "No. of Student : " + org.Org_NoStudent.toString()
                     binding.orgAddressDn.text = "No. of Address :  " + org.Org_Address + "," + org.Org_City + "," + org.Org_State + "," + org.Org_Country
@@ -93,8 +93,13 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
                         .into(binding.orgAssuranceLaterIv)
                 }
             }
-
-
+        if (binding.zakat.isChecked) {
+            type = binding.zakat.text.toString()
+        } else if (binding.sadkah.isChecked) {
+            type = binding.sadkah.text.toString()
+        }
+        else
+            type=binding.lillah.text.toString()
 
         binding.orgDonateNowBtnDn.setOnClickListener {
             binding.donateNowMainCard.visibility = View.GONE
@@ -104,19 +109,12 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
 
 
             binding.paynowSbBtn.setOnClickListener {
-
-                if (binding.zakat.isChecked) {
-                    type = binding.zakat.text.toString()
-                } else if (binding.sadkah.isChecked) {
-                    type = binding.sadkah.text.toString()
-                }
-                else
-                    type=binding.lillah.text.toString()
-
-                if (binding.donAmountSb.text.isEmpty()) {
+                if (binding.donAmountSb.text.isEmpty()){
                     binding.donAmountSb.requestFocus()
-                    binding.donAmountSb.error = "Please Enter Amount"
-                } else {
+                    binding.donAmountSb.error="Please Enter Amount"
+                }
+                else {
+
 
                     val co = Checkout()
                     // apart from setting it in AndroidManifest.xml, keyId can also be set
@@ -230,37 +228,61 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
         }
     }
 
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onPaymentSuccess(p0: String?) {
+        try {
 
-        val now = LocalDateTime.now()
 
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+            val now = LocalDateTime.now()
 
-        val formattedDateTime = now.format(formatter).toString()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
+            val formattedDateTime = now.format(formatter).toString()
             db.collection("trans")
                 .document(oId)
-                .set(Transaction(oId,auth.uid.toString(),org.Org_Id!!,formattedDateTime.toLong(),binding.donAmountSb.text.toString().toDouble(),type))
-            // Create an AlertDialog.Builder instance
-            val builder = AlertDialog.Builder(this)
+                .set(
+                    Transaction(
+                        oId,
+                        auth.uid.toString(),
+                        org.Org_Id!!,
+                       "$formattedDateTime",
+                        binding.donAmountSb.text.toString().toDouble(),
+                        type
+                    )
+                )
+                .addOnSuccessListener {
+                    // Create an AlertDialog.Builder instance
+                    val builder = AlertDialog.Builder(this)
 
 // Set the dialog title
-            builder.setTitle("Payment Status")
+                    builder.setTitle("Payment Status")
 
 // Set the dialog message
-            builder.setMessage("SUCCESSFULL")
+                    builder.setMessage("SUCCESSFULL")
 
 // Add a button to the dialog
-            builder.setPositiveButton("OK") { dialog, which ->
-                // Do something when the user clicks the OK button
-                startActivity(Intent(this,donatornmain::class.java))
-            }
+                    builder.setPositiveButton("OK") { dialog, which ->
+                        // Do something when the user clicks the OK button
+                        startActivity(Intent(this, donatornmain::class.java))
+                    }
 
 // Create and show the AlertDialog
-            val dialog = builder.create()
-            dialog.show()
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this,"DBError",Toast.LENGTH_SHORT).show()
+                }
+
+
+
+
+
+        }
+        catch (e:java.lang.Exception){
+            Toast.makeText(this,e.message,Toast.LENGTH_LONG).show()
+            Log.d("onsuccess error",e.message.toString())
         }
     }
     override fun onPaymentError(p0: Int, p1: String?) {
