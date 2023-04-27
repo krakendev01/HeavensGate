@@ -1,5 +1,6 @@
 package com.donation.heavensgate.Activities
 
+import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -14,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 class Fund_SignIn : AppCompatActivity() {
     private lateinit var binding:ActivityFundSignInBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var pd:ProgressDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         binding= ActivityFundSignInBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -21,6 +23,8 @@ class Fund_SignIn : AppCompatActivity() {
         // ...
         // Initialize Firebase Auth
         auth = Firebase.auth
+        pd = ProgressDialog(this)
+        pd.setTitle("Signing..")
 
         binding.BtnSignin.setOnClickListener {
 
@@ -50,7 +54,10 @@ class Fund_SignIn : AppCompatActivity() {
     private fun FundSingIn(Email: String, Pass: String) {
         auth.signInWithEmailAndPassword(Email,Pass )
             .addOnCompleteListener(this) { task ->
+                pd.show()
                 if (task.isSuccessful) {
+
+
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
@@ -59,6 +66,7 @@ class Fund_SignIn : AppCompatActivity() {
 
 
                 } else {
+
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed. \n Please Check Email Or Passord",
@@ -67,6 +75,7 @@ class Fund_SignIn : AppCompatActivity() {
                 }
             }
             .addOnFailureListener{exception->
+                pd.hide()
                 Toast.makeText(this,exception.message, Toast.LENGTH_SHORT).show()
             }
 

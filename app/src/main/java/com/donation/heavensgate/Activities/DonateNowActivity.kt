@@ -1,10 +1,13 @@
 package com.donation.heavensgate.Activities
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.donation.heavensgate.R
@@ -22,6 +25,8 @@ import com.razorpay.Checkout
 import com.razorpay.PayloadHelper
 import com.razorpay.PaymentResultListener
 import org.json.JSONObject
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
@@ -33,6 +38,7 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
     lateinit var org : AddOrgModel
     lateinit var type : String
     var oId : String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDonateNowBinding.inflate(layoutInflater)
@@ -77,6 +83,7 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
                     }
                     binding.orgPrincipalNameDn.text = "Principal Name : " + org.Org_Principal
                     binding.orgNameDn.text = org.Org_Name
+                    binding.orgDescription.text=org.Org_Description
                     binding.orgStaffNoDn.text = "No. of Staff : "+org.Org_NoStaff.toString()
                     binding.orgStudentNoDn.text = "No. of Student : " + org.Org_NoStudent.toString()
                     binding.orgAddressDn.text = "No. of Address :  " + org.Org_Address + "," + org.Org_City + "," + org.Org_State + "," + org.Org_Country
@@ -87,57 +94,74 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
                 }
             }
 
+
+
         binding.orgDonateNowBtnDn.setOnClickListener {
             binding.donateNowMainCard.visibility = View.GONE
             binding.orgNameSb.text = binding.orgNameDn.text
             binding.donateNowSubCard.visibility = View.VISIBLE
             binding.lillah.isChecked = true
-            type = "Lillah"
-            if (binding.zakat.isChecked) {
-                type = "Zakat"
-            } else if (binding.sadkah.isChecked) {
-                type = "Sadkah"
-            }
+
+
             binding.paynowSbBtn.setOnClickListener {
 
-                val co = Checkout()
-                // apart from setting it in AndroidManifest.xml, keyId can also be set
-                // programmatically during runtime
-                oId = Integer.toHexString(Random().nextInt(99999999))
-                co.setKeyID("rzp_test_5FCHZjoDEbaqUW")
-                val payloadHelper = PayloadHelper("INR", Math.round(binding.donAmountSb.text.toString().toFloat() * 100).toInt(),oId )
-                payloadHelper.name = R.string.app_name.toString()
-                payloadHelper.description = "Description"
-                payloadHelper.prefillEmail = user.userEmail
-                payloadHelper.prefillContact = user.userPhoneNo
-                payloadHelper.prefillName = org.Org_Name
-                payloadHelper.sendSmsHash = true
-                payloadHelper.retryMaxCount = 4
-                payloadHelper.retryEnabled = true
-                payloadHelper.color = "#000000"
-                payloadHelper.allowRotation = true
-                payloadHelper.rememberCustomer = true
-                payloadHelper.timeout = 10
-                payloadHelper.redirect = true
-                payloadHelper.recurring = "1"
-                payloadHelper.subscriptionCardChange = true
-                payloadHelper.customerId = "cust_XXXXXXXXXX"
-                payloadHelper.callbackUrl = "https://accepts-posts.request"
-                payloadHelper.subscriptionId = "sub_XXXXXXXXXX"
-                payloadHelper.modalConfirmClose = true
-                payloadHelper.backDropColor = "#ffffff"
-                payloadHelper.hideTopBar = true
-                payloadHelper.notes = JSONObject("{\"remarks\":\"Discount to cusomter\"}")
-                payloadHelper.readOnlyEmail = true
-                payloadHelper.readOnlyContact = false
-                payloadHelper.readOnlyName = true
-                payloadHelper.image = "https://firebasestorage.googleapis.com/v0/b/heaven-s-gate-4621a.appspot.com/o/logo.png?alt=media&token=c1527dd3-d4cf-4c69-8b33-f03c38a94fdd"
-                // these values are set mandatorily during object initialization. Those values can be overridden like this
-                payloadHelper.amount= Math.round(binding.donAmountSb.text.toString().toFloat() * 100).toInt()
-                payloadHelper.currency="INR"
+                if (binding.zakat.isChecked) {
+                    type = binding.zakat.text.toString()
+                } else if (binding.sadkah.isChecked) {
+                    type = binding.sadkah.text.toString()
+                }
+                else
+                    type=binding.lillah.text.toString()
 
-                startPayment()
-                /*GlobalScope.launch {
+                if (binding.donAmountSb.text.isEmpty()) {
+                    binding.donAmountSb.requestFocus()
+                    binding.donAmountSb.error = "Please Enter Amount"
+                } else {
+
+                    val co = Checkout()
+                    // apart from setting it in AndroidManifest.xml, keyId can also be set
+                    // programmatically during runtime
+                    oId = Integer.toHexString(Random().nextInt(99999999))
+                    co.setKeyID("rzp_test_5FCHZjoDEbaqUW")
+                    val payloadHelper = PayloadHelper(
+                        "INR",
+                        Math.round(binding.donAmountSb.text.toString().toFloat() * 100).toInt(),
+                        oId
+                    )
+                    payloadHelper.name = R.string.app_name.toString()
+                    payloadHelper.description = "Description"
+                    payloadHelper.prefillEmail = user.userEmail
+                    payloadHelper.prefillContact = user.userPhoneNo
+                    payloadHelper.prefillName = org.Org_Name
+                    payloadHelper.sendSmsHash = true
+                    payloadHelper.retryMaxCount = 4
+                    payloadHelper.retryEnabled = true
+                    payloadHelper.color = "#000000"
+                    payloadHelper.allowRotation = true
+                    payloadHelper.rememberCustomer = true
+                    payloadHelper.timeout = 10
+                    payloadHelper.redirect = true
+                    payloadHelper.recurring = "1"
+                    payloadHelper.subscriptionCardChange = true
+                    payloadHelper.customerId = "cust_XXXXXXXXXX"
+                    payloadHelper.callbackUrl = "https://accepts-posts.request"
+                    payloadHelper.subscriptionId = "sub_XXXXXXXXXX"
+                    payloadHelper.modalConfirmClose = true
+                    payloadHelper.backDropColor = "#ffffff"
+                    payloadHelper.hideTopBar = true
+                    payloadHelper.notes = JSONObject("{\"remarks\":\"Discount to cusomter\"}")
+                    payloadHelper.readOnlyEmail = true
+                    payloadHelper.readOnlyContact = false
+                    payloadHelper.readOnlyName = true
+                    payloadHelper.image =
+                        "https://firebasestorage.googleapis.com/v0/b/heaven-s-gate-4621a.appspot.com/o/logo.png?alt=media&token=c1527dd3-d4cf-4c69-8b33-f03c38a94fdd"
+                    // these values are set mandatorily during object initialization. Those values can be overridden like this
+                    payloadHelper.amount =
+                        Math.round(binding.donAmountSb.text.toString().toFloat() * 100).toInt()
+                    payloadHelper.currency = "INR"
+
+                    startPayment()
+                    /*GlobalScope.launch {
                     checkout.setKeyID("rzp_test_5FCHZjoDEbaqUW")
                     checkout.setImage(R.drawable.logo_icon)
                     val obj = JSONObject()
@@ -168,6 +192,7 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
                     }
                     checkout.open(this@DonateNowActivity, obj)
                 }*/
+                }
             }
         }
     }
@@ -205,11 +230,37 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onPaymentSuccess(p0: String?) {
+
+        val now = LocalDateTime.now()
+
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+
+        val formattedDateTime = now.format(formatter).toString()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
             db.collection("trans")
                 .document(oId)
-                .set(Transaction(oId,auth.uid.toString(),org.Org_Id!!, Date().time,binding.donAmountSb.text.toString().toDouble(),type))
+                .set(Transaction(oId,auth.uid.toString(),org.Org_Id!!,"$formattedDateTime",binding.donAmountSb.text.toString().toDouble(),type))
+            // Create an AlertDialog.Builder instance
+            val builder = AlertDialog.Builder(this)
+
+// Set the dialog title
+            builder.setTitle("Payment Status")
+
+// Set the dialog message
+            builder.setMessage("SUCCESSFULL")
+
+// Add a button to the dialog
+            builder.setPositiveButton("OK") { dialog, which ->
+                // Do something when the user clicks the OK button
+                startActivity(Intent(this,donatornmain::class.java))
+            }
+
+// Create and show the AlertDialog
+            val dialog = builder.create()
+            dialog.show()
         }
     }
     override fun onPaymentError(p0: Int, p1: String?) {

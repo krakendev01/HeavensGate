@@ -1,5 +1,6 @@
 package com.donation.heavensgate.Activities
 
+import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -20,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class SignIn : AppCompatActivity() {
     lateinit var binding:ActivitySigninBinding
     private lateinit var auth : FirebaseAuth
+    private lateinit var pd:ProgressDialog
 /*
     private var verificationId: String? = ""
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
@@ -212,7 +214,8 @@ class SignIn : AppCompatActivity() {
                     Log.e(TAG, "signInWithCredential:failure", task.exception)
                 }
             }*/
-
+        pd = ProgressDialog(this)
+        pd.setTitle("signin IN")
     binding.signup.setOnClickListener {
         startActivity(Intent(this,Choice::class.java))
     }
@@ -248,6 +251,7 @@ class SignIn : AppCompatActivity() {
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
+                pd.show()
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
@@ -259,6 +263,10 @@ class SignIn : AppCompatActivity() {
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
                 }
+            }
+            .addOnFailureListener { exception->
+                pd.hide()
+                Toast.makeText(this,exception.message,Toast.LENGTH_SHORT).show()
             }
     }
 

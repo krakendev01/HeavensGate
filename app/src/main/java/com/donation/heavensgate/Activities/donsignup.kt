@@ -1,11 +1,14 @@
 package com.donation.heavensgate.Activities
 
+import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable.ProgressDrawableSize
+import com.donation.heavensgate.R
 import com.donation.heavensgate.databinding.ActivityDonsignupBinding
 import com.donation.heavensgate.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -16,6 +19,7 @@ class donsignup : AppCompatActivity() {
     lateinit var binding: ActivityDonsignupBinding
     lateinit var database: FirebaseDatabase
     lateinit var user: User
+    lateinit var pd:ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +27,10 @@ class donsignup : AppCompatActivity() {
         setContentView(binding.root)
         auth= FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
+
+        pd = ProgressDialog(this)
+        pd.setTitle("signin IN")
+        binding.imageView2.setImageResource(R.drawable.signuppic)
 
         binding.btnotp.setOnClickListener {
 
@@ -51,13 +59,13 @@ class donsignup : AppCompatActivity() {
         }
         else if (binding.Pass.text.toString().isEmpty()){
             binding.Pass.requestFocus()
-            binding.Pass.error="Please Enter a Email"
+            binding.Pass.error="Please Enter a password"
         }
         else if (binding.CnPass.text.toString().isEmpty()){
             binding.CnPass.requestFocus()
-            binding.CnPass.error="Please Enter a Email"
+            binding.CnPass.error="Please Enter a password"
         }
-        else if (binding.CnPass.text.toString() != binding.toString()){
+        else if (binding.CnPass.editableText.toString() != binding.Pass.editableText.toString()){
             Toast.makeText(this,"Password Does not Match",Toast.LENGTH_SHORT).show()
         }
         else
@@ -72,6 +80,7 @@ class donsignup : AppCompatActivity() {
 
         auth.createUserWithEmailAndPassword(Email, Pass)
             .addOnCompleteListener(this) { task ->
+                pd.show()
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
@@ -89,6 +98,12 @@ class donsignup : AppCompatActivity() {
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
                 }
+            }
+            .addOnFailureListener {
+                pd.hide()
+                Toast.makeText(baseContext, "Authentication failed. Try again",
+                    Toast.LENGTH_SHORT).show()
+
             }
     }
 

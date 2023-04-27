@@ -27,14 +27,17 @@ class SearchFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         database = FirebaseDatabase.getInstance()
+
         transList = ArrayList()
+
+
 
         db.collection("trans")
             .whereEqualTo("donator",auth.uid.toString())
             .get()
             .addOnSuccessListener {
                 if (it.isEmpty)
-                    return@addOnSuccessListener
+                binding.TVDonation.setText("No Donations till now")
                 else{
                     it.documents.forEach {it1->
                         val trans = it1.toObject(Transaction::class.java)!!

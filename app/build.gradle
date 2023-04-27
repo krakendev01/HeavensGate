@@ -103,6 +103,9 @@ dependencies {
     //Razorpay Payment Integration
     implementation 'com.razorpay:checkout:1.6.26'
 
+    //pdf reciept
+    implementation 'com.itextpdf:itextpdf:5.5.13.2'
+
 
 
 
