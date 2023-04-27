@@ -242,7 +242,7 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
 
             db.collection("trans")
                 .document(oId)
-                .set(Transaction(oId,auth.uid.toString(),org.Org_Id!!,"$formattedDateTime",binding.donAmountSb.text.toString().toDouble(),type))
+                .set(Transaction(oId,auth.uid.toString(),org.Org_Id!!,formattedDateTime.toLong(),binding.donAmountSb.text.toString().toDouble(),type))
             // Create an AlertDialog.Builder instance
             val builder = AlertDialog.Builder(this)
 

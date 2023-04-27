@@ -11,7 +11,7 @@ import com.donation.heavensgate.databinding.SampleDonationListBinding
 import com.donation.heavensgate.models.AddOrgModel
 import com.donation.heavensgate.models.Transaction
 import com.donation.heavensgate.models.User
-import com.github.florent37.expansionpanel.ExpansionLayout
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -55,8 +55,11 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
                     }
 
                 })
+
             binding.downloadBtn.setOnClickListener {
+
                 generatePdf(binding.expansionLayout)
+
             }
             db.collection("Organisations")
                 .document(myTrans.fundraiser)
@@ -75,11 +78,7 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
 
                 }
 
-
         }
-
-        
-
         private fun generatePdf(layout: View) {
             val pdfFile = File(Environment.getExternalStorageDirectory(), "myPdfFile.pdf")
             val document = Document()
@@ -92,11 +91,9 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
             document.add(image)
             document.close()
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DonatorRecieptViewHolder {
-
         val binding=SampleDonationListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return DonatorRecieptViewHolder(binding)
     }
