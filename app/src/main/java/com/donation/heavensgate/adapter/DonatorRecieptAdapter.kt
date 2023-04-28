@@ -139,7 +139,7 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
                 } else {
                     val mediaScannerIntent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
                     mediaScannerIntent.data = Uri.fromFile(pdfFile)
-                        layout.context.sendBroadcast(mediaScannerIntent)
+                    layout.context.sendBroadcast(mediaScannerIntent)
 
                 }
             } catch (e :Exception){
