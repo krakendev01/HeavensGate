@@ -1,10 +1,17 @@
 package com.donation.heavensgate.adapter
 
+import android.Manifest
+import android.app.Activity
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.donation.heavensgate.databinding.SampleDonationListBinding
@@ -24,6 +31,9 @@ import com.itextpdf.text.pdf.PdfWriter
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.coroutines.coroutineContext
 
 class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
     RecyclerView.Adapter<DonatorRecieptAdapter.DonatorRecieptViewHolder>() {
@@ -46,7 +56,7 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
                         don= snapshot.getValue(User::class.java)!!
                         binding.amount.text="₹"+myTrans.amount.toString()
                         binding.typ.text=myTrans.type
-                        binding.time.text=myTrans.time.toString()
+                        binding.time.text= myTrans.time
                         binding.amountEx.text="₹"+myTrans.amount.toString()
 
                     }
@@ -80,16 +90,33 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
 
         }
         private fun generatePdf(layout: View) {
-            val pdfFile = File(Environment.getExternalStorageDirectory(), "myPdfFile.pdf")
-            val document = Document()
-            PdfWriter.getInstance(document, FileOutputStream(pdfFile))
-            document.open()
-            val stream = ByteArrayOutputStream()
-            layout.isDrawingCacheEnabled = true
-            Bitmap.createBitmap(layout.drawingCache).compress(Bitmap.CompressFormat.PNG, 100, stream)
-            val image = Image.getInstance(stream.toByteArray())
-            document.add(image)
-            document.close()
+
+            val rootDir = Environment.getExternalStorageDirectory()
+            val dir = File(rootDir, "Downloads/Heavans_Gate")
+
+            if (!dir.exists()) {
+                dir.mkdirs()
+            }
+
+            val file = File(dir, "${Date().time}.pdf")
+            val pdfFile = file
+            try {
+                if (!pdfFile.exists())
+                    pdfFile.createNewFile()
+                val document = Document()
+                PdfWriter.getInstance(document, FileOutputStream(pdfFile))
+                document.open()
+                val stream = ByteArrayOutputStream()
+                layout.isDrawingCacheEnabled = true
+                Bitmap.createBitmap(layout.drawingCache)
+                    .compress(Bitmap.CompressFormat.PNG, 100, stream)
+                val image = Image.getInstance(stream.toByteArray())
+                document.add(image)
+                document.close()
+                Log.d("PDF","Generated Successfully")
+            }catch (e :Exception){
+                e.printStackTrace()
+            }
         }
     }
 

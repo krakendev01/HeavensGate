@@ -243,8 +243,7 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
 
             val formattedDateTime = now.format(formatter).toString()
             db.collection("trans")
-                .document(org.Org_Id.toString())
-                .collection("mytrans").document(oId)
+                .document(oId)
                 .set(
                     Transaction(
                         oId,

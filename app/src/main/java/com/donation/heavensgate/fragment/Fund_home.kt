@@ -37,9 +37,9 @@ class Fund_home : Fragment() {
 
 
         db.collection("trans")
-            .document(auth.uid.toString()).collection("mytrans")
-            //.whereEqualTo("oId",auth.uid.toString())
+            .whereEqualTo("fundraiser",auth.uid.toString())
             .get()
+            //.whereEqualTo("oId",auth.uid.toString())
             .addOnSuccessListener { value ->
                 if (value.isEmpty) {
                     binding.TVDonation.setText("NO DONATIONS FOR YOUR ORGANISATION")
