@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable.ProgressDrawableSize
 import com.donation.heavensgate.R
 import com.donation.heavensgate.databinding.ActivityDonsignupBinding
 import com.donation.heavensgate.models.User
@@ -82,6 +81,9 @@ class donsignup : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 pd.show()
                 if (task.isSuccessful) {
+
+                    //REALTIME DATABASE
+
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     user= User(binding.UserPhone.text.toString(),binding.UserEmail.text.toString(),binding.UserName.text.toString(),"Don")
