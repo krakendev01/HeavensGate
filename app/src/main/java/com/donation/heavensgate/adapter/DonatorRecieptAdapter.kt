@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -128,7 +129,7 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
                 Log.d("PDF","Generated Successfully")
 
                 // Save the PDF file to the device's media store
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     val resolver = layout.context.contentResolver
                     val contentValues = ContentValues().apply {
                         put(MediaStore.MediaColumns.DISPLAY_NAME, file.name)
@@ -136,11 +137,13 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
                         put(MediaStore.MediaColumns.RELATIVE_PATH, "Download/Heavans_Gate")
                     }
                     resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues)
-                } else {
-                    val mediaScannerIntent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
-                    mediaScannerIntent.data = Uri.fromFile(pdfFile)
-                    layout.context.sendBroadcast(mediaScannerIntent)
-
+                } else {MediaScannerConnection.scanFile(
+                            layout.context,
+                        arrayOf(pdfFile.absolutePath),
+                        arrayOf("application/pdf"),
+                        null
+                        )
+                        Log.d("PDF", "Scanned Successfully")
                 }
             } catch (e :Exception){
                 e.printStackTrace()
@@ -148,7 +151,7 @@ class DonatorRecieptAdapter(var myTransList: List<Transaction>) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DonatorRecieptViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DonatorRecieptAdapter.DonatorRecieptViewHolder {
         val binding=SampleDonationListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return DonatorRecieptViewHolder(binding)
     }
