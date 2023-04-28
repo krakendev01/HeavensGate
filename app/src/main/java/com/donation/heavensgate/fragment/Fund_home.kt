@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.donation.heavensgate.adapter.OrgDonationAdapter
 import com.donation.heavensgate.databinding.FragmentFundHomeBinding
@@ -36,8 +37,15 @@ class Fund_home : Fragment() {
 
 
         db.collection("trans")
+            .document(auth.uid.toString()).collection("mytrans")
+            //.whereEqualTo("oId",auth.uid.toString())
             .get()
             .addOnSuccessListener { value ->
+                if (value.isEmpty) {
+                    binding.TVDonation.setText("NO DONATIONS FOR YOUR ORGANISATION")
+                    Toast.makeText(requireContext(),"no Donations for your Organisation",Toast.LENGTH_SHORT).show()
+                } else {
+
                 var transList = ArrayList<Transaction>()
                 value.forEach {
                     val trans: Transaction? = it.toObject(Transaction::class.java)
@@ -47,6 +55,8 @@ class Fund_home : Fragment() {
                 Log.d("value", value.toString())
                 binding.donatorlist.adapter = OrgDonationAdapter(transList)
 //                        Log.d("Org list in interface",orgList.toString())
+
+            }
             }.addOnFailureListener { exception ->
                 Log.d("DB ERROR", "Error getting documents: ", exception)
             }

@@ -93,13 +93,7 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
                         .into(binding.orgAssuranceLaterIv)
                 }
             }
-        if (binding.zakat.isChecked) {
-            type = binding.zakat.text.toString()
-        } else if (binding.sadkah.isChecked) {
-            type = binding.sadkah.text.toString()
-        }
-        else
-            type=binding.lillah.text.toString()
+
 
         binding.orgDonateNowBtnDn.setOnClickListener {
             binding.donateNowMainCard.visibility = View.GONE
@@ -109,6 +103,15 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
 
 
             binding.paynowSbBtn.setOnClickListener {
+
+                if (binding.zakat.isChecked) {
+                    type = binding.zakat.text.toString()
+                } else if (binding.sadkah.isChecked) {
+                    type = binding.sadkah.text.toString()
+                }
+                else
+                    type=binding.lillah.text.toString()
+
                 if (binding.donAmountSb.text.isEmpty()){
                     binding.donAmountSb.requestFocus()
                     binding.donAmountSb.error="Please Enter Amount"
@@ -240,7 +243,8 @@ class DonateNowActivity : AppCompatActivity() ,PaymentResultListener{
 
             val formattedDateTime = now.format(formatter).toString()
             db.collection("trans")
-                .document(oId)
+                .document(org.Org_Id.toString())
+                .collection("mytrans").document(oId)
                 .set(
                     Transaction(
                         oId,
